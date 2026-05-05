@@ -11,6 +11,7 @@
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body { margin: 0; font-family: -apple-system, system-ui, sans-serif; background: #f0f2f5; overflow-x: hidden; width: 100%; height: 100%; }
         
+        /* গুগল ট্রান্সলেট বার হাইড করা */
         .goog-te-banner-frame.skiptranslate, .goog-te-gadget { display: none !important; }
         body { top: 0px !important; }
 
@@ -18,9 +19,12 @@
         .profile-card { background: white; text-align: center; padding-bottom: 20px; border-bottom: 1px solid #ddd; }
         .pfp-wrap { position: relative; margin-top: -60px; display: inline-block; }
         .pfp { width: 140px; height: 140px; border-radius: 50%; border: 4px solid white; background: url('https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true') center/cover; }
+        
         .online { position: absolute; bottom: 10px; right: 10px; width: 22px; height: 22px; background: #31a24c; border: 3px solid white; border-radius: 50%; }
+        
         .name { font-size: 24px; font-weight: bold; margin: 10px 0 2px; display: flex; align-items: center; justify-content: center; gap: 6px; }
         .verified { color: #0084FF; font-size: 20px; }
+        
         .bio { color: #65676b; font-style: italic; padding: 0 30px; margin-bottom: 15px; font-size: 14px; }
 
         .btn-row { display: flex; justify-content: center; gap: 10px; padding: 0 15px; }
@@ -34,35 +38,43 @@
         .post-txt { font-size: 15px; line-height: 1.4; margin-bottom: 10px; color: #050505; }
         .post-img { width: calc(100% + 30px); margin-left: -15px; height: auto; display: block; max-height: 450px; object-fit: cover; }
         .post-stats { padding: 10px 0; border-bottom: 1px solid #eee; font-size: 13px; color: #65676b; display: flex; justify-content: space-between; }
+        
+        .like-btn { cursor: pointer; transition: 0.2s; }
         .like-btn.active { color: var(--fb-blue); font-weight: bold; }
-
-        /* পেমেন্ট টেমপ্লেট ডিজাইন */
-        #reg-lock { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 20000; display: none; align-items: center; justify-content: center; padding: 20px; }
-        .reg-box { background: white; padding: 25px; border-radius: 20px; width: 100%; max-width: 350px; text-align: center; }
-        .reg-box h2 { font-size: 22px; color: #fa3e3e; margin-bottom: 10px; }
-        .price-option { display: flex; align-items: center; justify-content: space-between; padding: 12px; border: 1px solid #ddd; border-radius: 10px; margin-bottom: 10px; cursor: pointer; }
-        .price-option.selected { border-color: var(--fb-blue); background: #f0f7ff; }
-        .dot { height: 12px; width: 12px; border-radius: 50%; border: 2px solid #ddd; }
-        .selected .dot { background: var(--fb-blue); border-color: var(--fb-blue); }
-        .reg-btn { background: #31a24c; color: white; padding: 15px; border-radius: 10px; text-decoration: none; font-weight: bold; display: block; margin-top: 20px; font-size: 18px; }
 
         /* কল ইন্টারফেস */
         #call-ui { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 10000; display: none; flex-direction: column; align-items: center; justify-content: center; color: white; }
+        .call-info { text-align: center; margin-bottom: 40px; }
         .call-pfp { width: 130px; height: 130px; border-radius: 50%; border: 3px solid #fff; margin-bottom: 15px; object-fit: cover; }
         .call-actions { display: flex; gap: 60px; margin-top: 20px; }
         .c-btn { width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; color: white; border: none; cursor: pointer; }
         .c-accept { background: #31a24c; }
         .c-decline { background: #fa3e3e; }
 
+        /* ভিডিও এরিয়া */
         #video-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 11000; display: none; }
         #remote-video { width: 100%; height: 100%; object-fit: cover; }
         #local-cam { position: absolute; top: 20px; right: 20px; width: 100px; height: 140px; border-radius: 8px; border: 1px solid white; object-fit: cover; transform: scaleX(-1); }
-        .video-disconnect-btn { position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%); width: 70px; height: 70px; background: #fa3e3e; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; color: white; border: none; }
-        
-        #toast { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.8); color: white; padding: 10px 20px; border-radius: 5px; display: none; z-index: 30000; }
+        .video-disconnect-btn { position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%); width: 70px; height: 70px; background: #fa3e3e; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; color: white; border: none; z-index: 11001; }
+
+        /* পেমেন্ট টেমপ্লেট */
+        #reg-lock { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 20000; display: none; align-items: center; justify-content: center; padding: 20px; }
+        .reg-box { background: white; padding: 25px; border-radius: 20px; width: 100%; max-width: 350px; text-align: center; position: relative; }
+        .reg-box h2 { font-size: 24px; color: #fa3e3e; margin-bottom: 5px; font-weight: bold; }
+        .price-list { margin: 20px 0; }
+        .price-option { display: flex; align-items: center; justify-content: space-between; padding: 12px 15px; border: 2px solid #eee; border-radius: 12px; margin-bottom: 10px; cursor: pointer; transition: 0.3s; }
+        .price-option.selected { border-color: var(--fb-blue); background: #f0f7ff; }
+        .dot { height: 16px; width: 16px; border-radius: 50%; border: 2px solid #ddd; position: relative; }
+        .selected .dot { border-color: var(--fb-blue); }
+        .selected .dot::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 8px; height: 8px; background: var(--fb-blue); border-radius: 50%; }
+        .reg-btn { background: #31a24c; color: white; padding: 16px; border-radius: 12px; text-decoration: none; font-weight: bold; display: block; margin-top: 15px; font-size: 18px; box-shadow: 0 4px 10px rgba(49, 162, 76, 0.3); }
+
+        #toast { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.8); color: white; padding: 12px 25px; border-radius: 8px; display: none; z-index: 30000; font-size: 14px; }
     </style>
 </head>
 <body onclick="enableAudio()">
+
+    <div id="google_translate_element" style="display:none;"></div>
 
     <audio id="ringtone" loop preload="auto">
         <source src="https://github.com/pj9889/aud/raw/refs/heads/main/audio%20(2).mpeg" type="audio/mpeg">
@@ -72,9 +84,9 @@
     <div class="profile-card">
         <div class="pfp-wrap"><div class="pfp"></div><div class="online"></div></div>
         <div class="name">Surovi Ponipuri <i class="fas fa-check-circle verified"></i></div>
-        <div class="bio">"ব্যক্তিগত কিছু মুহূর্ত কাটাতে চাও? আমি তোমার জন্য অপেক্ষা করছি... 🔥"</div>
+        <div class="bio">"মাঝে মাঝে কিছু কথা গোপনে বলতে হয়। তুমি কি তৈরি আমার জন্য? 🔥"</div>
         <div class="btn-row">
-            <button class="btn btn-call" onclick="handleCallBtn()"><i class="fas fa-video"></i> Video Call</button>
+            <button class="btn btn-call" onclick="handleCallLogic()"><i class="fas fa-video"></i> Video Call</button>
             <button class="btn btn-msg" onclick="showPayment()"><i class="fab fa-facebook-messenger"></i> Message</button>
         </div>
     </div>
@@ -85,20 +97,56 @@
             <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri <i class="fas fa-check-circle verified" style="font-size:12px;"></i></strong><br><small>২ ঘণ্টা আগে</small></div></div>
             <div class="post-txt">মাঝরাতে খুব একা লাগছে... কেউ কি আসবে আমার একাকিত্ব দূর করতে? ভিডিও কলে অনেক মজা হবে। 💋💦</div>
             <img src="https://github.com/pj9889/picvid/blob/main/pic2.webp?raw=true" class="post-img">
-            <div class="post-stats">
-                <span class="like-btn" onclick="toggleLike(this)"><i class="fas fa-thumbs-up"></i> ১.২k</span> 
-                <span onclick="showError()">৪৫৮ টি মন্তব্য</span>
-            </div>
+            <div class="post-stats"><span class="like-btn" onclick="toggleLike(this)"><i class="fas fa-thumbs-up"></i> ১.২k</span> <span onclick="showError()">৪৫৮ টি মন্তব্য</span></div>
         </div>
         <!-- Post 2 -->
         <div class="post">
             <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri <i class="fas fa-check-circle verified" style="font-size:12px;"></i></strong><br><small>১ দিন আগে</small></div></div>
             <div class="post-txt">গরম জলে স্নান করছি, আমার সাথে জয়েন করতে চাও? ভিডিও কলে এসো, সব দেখাবো। 😈✨</div>
             <img src="https://github.com/pj9889/aud/blob/main/p1.webp?raw=true" class="post-img">
-            <div class="post-stats">
-                <span class="like-btn" onclick="toggleLike(this)"><i class="fas fa-thumbs-up"></i> ৩.৫k</span> 
-                <span onclick="showError()">৮৯২ টি মন্তব্য</span>
-            </div>
+            <div class="post-stats"><span class="like-btn" onclick="toggleLike(this)"><i class="fas fa-thumbs-up"></i> ৩.৫k</span> <span onclick="showError()">৮৯২ টি মন্তব্য</span></div>
+        </div>
+        <!-- Post 3 -->
+        <div class="post">
+            <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri <i class="fas fa-check-circle verified" style="font-size:12px;"></i></strong><br><small>৩ দিন আগে</small></div></div>
+            <div class="post-txt">আজ রাতে খুব দুষ্টুমি করতে ইচ্ছা করছে। কে আছো আমার সাথে সময় কাটাবে? 💋🔥</div>
+            <img src="https://github.com/pj9889/aud/blob/main/p2.webp?raw=true" class="post-img">
+            <div class="post-stats"><span class="like-btn" onclick="toggleLike(this)"><i class="fas fa-thumbs-up"></i> ৪.৮k</span> <span onclick="showError()">১.১k মন্তব্য</span></div>
+        </div>
+        <!-- Post 4 -->
+        <div class="post">
+            <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri <i class="fas fa-check-circle verified" style="font-size:12px;"></i></strong><br><small>৪ দিন আগে</small></div></div>
+            <div class="post-txt">শরীরে কাপড়ের বড় অভাব... কেউ কি ড্রেস চুজ করে দিবে? ভিডিও কলে এসো। 💦🍒</div>
+            <img src="https://github.com/pj9889/aud/blob/main/p3.webp?raw=true" class="post-img">
+            <div class="post-stats"><span class="like-btn" onclick="toggleLike(this)"><i class="fas fa-thumbs-up"></i> ৬.২k</span> <span onclick="showError()">১.৫k মন্তব্য</span></div>
+        </div>
+        <!-- Post 5 -->
+        <div class="post">
+            <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri <i class="fas fa-check-circle verified" style="font-size:12px;"></i></strong><br><small>৫ দিন আগে</small></div></div>
+            <div class="post-txt">বাসায় একদম একা, খুব বোর হচ্ছি। আমি কি পরে আছি দেখতে চাও? কল দাও! 😈🍑</div>
+            <img src="https://github.com/pj9889/aud/blob/main/p4.webp?raw=true" class="post-img">
+            <div class="post-stats"><span class="like-btn" onclick="toggleLike(this)"><i class="fas fa-thumbs-up"></i> ৮.৯k</span> <span onclick="showError()">২.৩k মন্তব্য</span></div>
+        </div>
+        <!-- Post 6 -->
+        <div class="post">
+            <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri <i class="fas fa-check-circle verified" style="font-size:12px;"></i></strong><br><small>৬ দিন আগে</small></div></div>
+            <div class="post-txt">ভিডিও কলে তোমার গলার আওয়াজ শুনতে শুনতে নিজেকে আদর করতে চাই। রিং করো! 💦🔥</div>
+            <img src="https://github.com/pj9889/picvid/blob/main/pic4.webp?raw=true" class="post-img">
+            <div class="post-stats"><span class="like-btn" onclick="toggleLike(this)"><i class="fas fa-thumbs-up"></i> ১০.১k</span> <span onclick="showError()">৩k মন্তব্য</span></div>
+        </div>
+        <!-- Post 7 -->
+        <div class="post">
+            <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri <i class="fas fa-check-circle verified" style="font-size:12px;"></i></strong><br><small>১ সপ্তাহ আগে</small></div></div>
+            <div class="post-txt">আজ রাতে তোমার সাথে সব ধরণের পাগলামি করতে চাই। তৈরি তো? 💖🍑</div>
+            <img src="https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true" class="post-img">
+            <div class="post-stats"><span class="like-btn" onclick="toggleLike(this)"><i class="fas fa-thumbs-up"></i> ১২k</span> <span onclick="showError()">৪k মন্তব্য</span></div>
+        </div>
+        <!-- Post 8 -->
+        <div class="post">
+            <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri <i class="fas fa-check-circle verified" style="font-size:12px;"></i></strong><br><small>১ সপ্তাহ আগে</small></div></div>
+            <div class="post-txt">জীবনের সবচেয়ে হট ভিডিও চ্যাট করতে চাও? এখনই আমাকে কল দাও! 🍑💦✨</div>
+            <img src="https://github.com/pj9889/picvid/blob/main/pic3.webp?raw=true" class="post-img">
+            <div class="post-stats"><span class="like-btn" onclick="toggleLike(this)"><i class="fas fa-thumbs-up"></i> ১৫k</span> <span onclick="showError()">৫.২k মন্তব্য</span></div>
         </div>
     </div>
 
@@ -128,27 +176,28 @@
     <div id="reg-lock">
         <div class="reg-box">
             <h2>আপনার Demo সার্ভিস শেষ!</h2>
-            <p>পুরো সার্ভিস উপভোগ করতে নিচের প্যাকেজটি কিনুন।</p>
+            <p style="color:#65676b; margin-top:5px;">পুরো সার্ভিস উপভোগ করতে নিচের প্যাকেজটি কিনুন।</p>
             
-            <div class="price-option selected" onclick="selectOption(this)">
-                <span>৫ মিনিট - ১৫০ টাকা</span>
-                <div class="dot"></div>
-            </div>
-            
-            <div class="price-option" onclick="selectOption(this)">
-                <span>১০ মিনিট - ১৯৯ টাকা</span>
-                <div class="dot"></div>
+            <div class="price-list">
+                <div class="price-option selected" onclick="selectOption(this)">
+                    <span style="font-weight:600;">৫ মিনিট - ১৫০ টাকা</span>
+                    <div class="dot"></div>
+                </div>
+                <div class="price-option" onclick="selectOption(this)">
+                    <span style="font-weight:600;">১০ মিনিট - ১৯৯ টাকা</span>
+                    <div class="dot"></div>
+                </div>
             </div>
 
-            <a href="YOUR_PAYMENT_LINK_HERE" class="reg-btn">সেবা কিনুন</a>
-            <p onclick="closeReg()" style="margin-top:10px; color:#65676b; cursor:pointer; font-size:13px;">ফিরে যান</p>
+            <a href="https://safeoffers.pro/a/RozKiOzWhOXLZ" class="reg-btn">সেবা কিনুন</a>
+            <p onclick="closeReg()" style="margin-top:15px; color:#0084FF; cursor:pointer; font-size:14px; font-weight:600;">ফিরে যান</p>
         </div>
     </div>
 
     <div id="toast">Something Wrong</div>
 
-    <script>
-        let callDone = false;
+    <script type="text/javascript">
+        let callCount = 0;
         let audioEnabled = false;
         const ringtone = document.getElementById('ringtone');
 
@@ -159,17 +208,14 @@
             }
         }
 
-        // অটো কল সিস্টেম
+        // অটো কল সিস্টেম (১৫ সেকেন্ড পর)
         setTimeout(() => {
-            if(!callDone) startCall();
+            if(callCount === 0) startCall();
         }, 15000);
 
-        function handleCallBtn() {
-            if(callDone) {
-                showPayment();
-            } else {
-                startCall();
-            }
+        function handleCallLogic() {
+            if(callCount > 0) showPayment();
+            else startCall();
         }
 
         function startCall() {
@@ -182,8 +228,8 @@
             document.getElementById('call-ui').style.display = 'none';
             document.getElementById('video-container').style.display = 'block';
             document.getElementById('remote-video').play();
+            callCount++;
             
-            // ১৩ সেকেন্ড পর কল শেষ হবে
             setTimeout(terminateCall, 13000);
 
             try {
@@ -193,7 +239,6 @@
         }
 
         function terminateCall() {
-            callDone = true;
             ringtone.pause();
             document.getElementById('video-container').style.display = 'none';
             document.getElementById('call-ui').style.display = 'none';
@@ -225,6 +270,11 @@
             toast.style.display = 'block';
             setTimeout(() => { toast.style.display = 'none'; }, 2000);
         }
+
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en', autoDisplay: false}, 'google_translate_element');
+        }
     </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
