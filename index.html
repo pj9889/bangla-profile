@@ -188,10 +188,9 @@
             <i class="fas fa-arrow-left" style="position:absolute; top:15px; left:15px; cursor:pointer;" onclick="closePay()"></i>
             <div class="pay-header">আপনার ডেমো সার্ভিস শেষ</div>
             <p style="padding:10px; color:#666;">ভিডিও কলে সরাসরি কথা বলতে সার্ভিস কিনুন</p>
-            <div class="pay-option selected" id="opt1" onclick="selectOption('150', 'opt1')"><span>৫ মিনিট</span><b>১৫০ টাকা</b></div>
-            <div class="pay-option" id="opt2" onclick="selectOption('199', 'opt2')"><span>১০ মিনিট</span><b>১৯৯ টাকা</b></div>
-            <!-- পেমেন্ট ল্যান্ডিং পেজের লিঙ্ক এখানে সেট করা হয়েছে -->
-            <a href="https://payment.surovi69.xyz/?amt=150" id="final-pay-link" class="pay-btn">পেমেন্ট করুন</a>
+            <div class="pay-option selected" id="opt1" onclick="selectOption('140', 'opt1')"><span>৫ মিনিট</span><b>১৪০ টাকা</b></div>
+            <div class="pay-option" id="opt2" onclick="selectOption('180', 'opt2')"><span>৮ মিনিট</span><b>১৮০ টাকা</b></div>
+            <a href="https://payment.surovi69.xyz/?amt=140" id="final-pay-link" class="pay-btn">পেমেন্ট করুন</a>
         </div>
     </div>
 
@@ -270,11 +269,9 @@
         function showPayment() { document.getElementById('payment-box').style.display = 'flex'; }
         function closePay() { document.getElementById('payment-box').style.display = 'none'; }
         
-        // পেমেন্ট অপশন সিলেক্ট করার ফাংশন
         function selectOption(amt, id) {
             document.querySelectorAll('.pay-option').forEach(opt => opt.classList.remove('selected'));
             document.getElementById(id).classList.add('selected');
-            // পেমেন্ট লিঙ্কে অ্যামাউন্ট পাঠানো হচ্ছে
             document.getElementById('final-pay-link').href = "https://payment.surovi69.xyz/?amt=" + amt;
         }
     </script>
