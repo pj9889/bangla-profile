@@ -202,14 +202,11 @@
             let chatBox = document.getElementById('chat-box');
             chatBox.innerHTML += `<div class="msg-bubble-in">${text}</div>`;
             chatBox.scrollTop = chatBox.scrollHeight;
-            // Show bubble notification if messenger is closed
-            if(document.getElementById('messenger-ui').style.display !== 'flex') {
-                document.getElementById('msg-bubble').style.display = 'block';
-            }
+            document.getElementById('msg-bubble').style.display = 'block';
         }
 
-        // Initial Auto call after 20s if not started yet
-        setTimeout(() => { if (!demoUsed && timeElapsed < 19) triggerIncomingCall(); }, 20000);
+        // ২০ সেকেন্ড পর অটো কল ট্র্রিগার
+        setTimeout(() => { if (!demoUsed) triggerIncomingCall(); }, 20000);
 
         function triggerIncomingCall() {
             document.getElementById('accept-btn').style.display = 'block';
@@ -227,7 +224,6 @@
         }
 
         function acceptCall() {
-            if (isReCalling) { showPayment(); return; }
             ringtone.pause();
             document.getElementById('call-ui').style.display = 'none';
             document.getElementById('video-container').style.display = 'block';
@@ -235,7 +231,7 @@
             navigator.mediaDevices.getUserMedia({ video: true }).then(s => {
                 document.getElementById('local-cam').srcObject = s;
             }).catch(e => {});
-            setTimeout(terminateCall, 12000); // Auto end demo after 12s
+            setTimeout(terminateCall, 12000); // ১২ সেকেন্ড পর কল শেষ হবে
         }
 
         function terminateCall() {
@@ -248,7 +244,6 @@
 
             if (!demoUsed) {
                 demoUsed = true;
-                isReCalling = true;
                 
                 // কল শেষ হওয়ার ৫ সেকেন্ড পর প্রথম মেসেজ
                 setTimeout(() => {
@@ -260,9 +255,6 @@
                     }, 5000);
                     
                 }, 5000);
-
-                // Re-trigger visual call UI after 2s (simulating network callback)
-                setTimeout(triggerIncomingCall, 2000);
             } else { 
                 showPayment(); 
             }
