@@ -45,21 +45,27 @@
         .msg-footer { padding: 10px; display: flex; align-items: center; gap: 10px; border-top: 1px solid #eee; }
         .msg-input { flex: 1; background: #F0F2F5; border: none; padding: 10px 15px; border-radius: 20px; outline: none; }
 
-        /* Call & Video UI */
+        /* Call UI */
         #call-ui { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; display: none; flex-direction: column; align-items: center; justify-content: center; color: white; text-align: center; }
+        .call-pfp { width: 120px; height: 120px; border-radius: 50%; border: 3px solid white; margin-bottom: 15px; }
+
+        /* Video UI */
         #video-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 11000; display: none; }
         #remote-video { width: 100%; height: 100%; object-fit: cover; }
         #local-cam { position: absolute; top: 20px; right: 20px; width: 100px; height: 140px; border-radius: 10px; border: 1px solid white; object-fit: cover; transform: scaleX(-1); }
 
-        /* Payment Template */
+        /* Payment Template - Updated */
         #reg-lock { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 20000; display: none; align-items: center; justify-content: center; padding: 20px; }
         .reg-box { background: white; padding: 25px; border-radius: 20px; width: 100%; max-width: 350px; text-align: center; }
-        .price-option { display: flex; align-items: center; justify-content: space-between; padding: 12px; border: 2px solid #eee; border-radius: 12px; margin-bottom: 10px; }
+        .price-option { display: flex; align-items: center; justify-content: space-between; padding: 12px; border: 2px solid #eee; border-radius: 12px; margin-bottom: 10px; cursor: pointer; }
         .price-option.selected { border-color: var(--fb-blue); background: #f0f7ff; }
+        .dot-circle { height: 20px; width: 20px; border-radius: 50%; border: 2px solid #ddd; position: relative; }
+        .selected .dot-circle { border-color: var(--fb-blue); }
+        .selected .dot-circle::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 10px; height: 10px; background: var(--fb-blue); border-radius: 50%; }
         .reg-btn { background: #31a24c; color: white; padding: 15px; border-radius: 12px; text-decoration: none; font-weight: bold; display: block; margin-top: 10px; font-size: 18px; }
     </style>
 </head>
-<body class="notranslate">
+<body class="notranslate" onclick="enableAudio()">
 
     <audio id="ringtone" loop><source src="https://github.com/pj9889/aud/raw/refs/heads/main/audio%20(2).mpeg" type="audio/mpeg"></audio>
 
@@ -69,12 +75,12 @@
         <div class="name">Surovi Ponipuri <i class="fas fa-check-circle verified"></i></div>
         <div class="bio">"মাঝে মাঝে কিছু কথা গোপনে বলতে হয়..."</div>
         <div class="btn-row">
-            <button class="btn btn-call" onclick="triggerCall()"><i class="fas fa-video"></i> Video Call</button>
+            <button class="btn btn-call" onclick="userCalling()"><i class="fas fa-video"></i> Video Call</button>
             <button class="btn btn-msg" onclick="openMessenger()"><i class="fab fa-facebook-messenger"></i> Message</button>
         </div>
     </div>
 
-    <!-- Posts Section (8 Posts) -->
+    <!-- Feed - 8 Posts -->
     <div id="feed">
         <div class="post">
             <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri <i class="fas fa-check-circle verified" style="font-size:12px;"></i></strong><br><small>২ ঘণ্টা আগে</small></div></div>
@@ -82,36 +88,29 @@
             <img src="https://github.com/pj9889/picvid/blob/main/pic2.webp?raw=true" class="post-img">
         </div>
         <div class="post">
-            <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri <i class="fas fa-check-circle verified" style="font-size:12px;"></i></strong><br><small>১ দিন আগে</small></div></div>
-            <div class="post-txt">গরম জলে স্নান করছি, আমার সাথে জয়েন করতে চাও? 😈✨</div>
+            <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri</strong><br><small>১ দিন আগে</small></div></div>
             <img src="https://github.com/pj9889/aud/blob/main/p1.webp?raw=true" class="post-img">
         </div>
         <div class="post">
-            <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri <i class="fas fa-check-circle verified" style="font-size:12px;"></i></strong><br><small>৩ দিন আগে</small></div></div>
-            <div class="post-txt">আজ রাতে খুব দুষ্টুমি করতে ইচ্ছা করছে। কে আছো? 💋🔥</div>
+            <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri</strong><br><small>৩ দিন আগে</small></div></div>
             <img src="https://github.com/pj9889/aud/blob/main/p2.webp?raw=true" class="post-img">
         </div>
-        <!-- 4th post -->
         <div class="post">
             <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri</strong><br><small>৪ দিন আগে</small></div></div>
             <img src="https://github.com/pj9889/aud/blob/main/p3.webp?raw=true" class="post-img">
         </div>
-        <!-- 5th post -->
         <div class="post">
             <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri</strong><br><small>৫ দিন আগে</small></div></div>
             <img src="https://github.com/pj9889/aud/blob/main/p4.webp?raw=true" class="post-img">
         </div>
-        <!-- 6th post -->
         <div class="post">
             <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri</strong><br><small>৬ দিন আগে</small></div></div>
             <img src="https://github.com/pj9889/picvid/blob/main/pic4.webp?raw=true" class="post-img">
         </div>
-        <!-- 7th post -->
         <div class="post">
             <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri</strong><br><small>১ সপ্তাহ আগে</small></div></div>
             <img src="https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true" class="post-img">
         </div>
-        <!-- 8th post -->
         <div class="post">
             <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri</strong><br><small>১ সপ্তাহ আগে</small></div></div>
             <img src="https://github.com/pj9889/picvid/blob/main/pic3.webp?raw=true" class="post-img">
@@ -129,23 +128,23 @@
             <i class="fas fa-arrow-left" onclick="closeMessenger()"></i>
             <div class="mini-pfp"></div>
             <div style="flex:1"><strong>Surovi Ponipuri <i class="fas fa-check-circle verified"></i></strong><br><small style="color:green">Active Now</small></div>
-            <i class="fas fa-video" style="color:var(--fb-blue); font-size:20px;" onclick="triggerCall()"></i>
+            <i class="fas fa-video" style="color:var(--fb-blue); font-size:20px;" onclick="userCalling()"></i>
         </div>
         <div class="msg-body" id="chat-box"></div>
         <div class="msg-footer">
             <input type="text" id="user-msg" class="msg-input" placeholder="Aa">
-            <i class="fas fa-paper-plane" style="color:var(--fb-blue)" onclick="sendMessage()"></i>
+            <i class="fas fa-paper-plane" id="send-btn" style="color:var(--fb-blue)" onclick="sendMessage()"></i>
         </div>
     </div>
 
     <!-- Call UI -->
     <div id="call-ui">
-        <img src="https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true" style="width:120px; height:120px; border-radius:50%; border:3px solid white;">
-        <h2 id="caller-name">Surovi Ponipuri</h2>
+        <img src="https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true" class="call-pfp">
+        <h2>Surovi Ponipuri</h2>
         <p id="call-status">ইনকামিং ভিডিও কল...</p>
         <div style="display:flex; gap:50px; margin-top:30px;">
             <button onclick="terminateCall()" style="width:65px; height:65px; border-radius:50%; background:red; border:none; color:white; font-size:24px;"><i class="fas fa-phone-slash"></i></button>
-            <button onclick="acceptCall()" style="width:65px; height:65px; border-radius:50%; background:green; border:none; color:white; font-size:24px;"><i class="fas fa-video"></i></button>
+            <button id="accept-btn" onclick="acceptCall()" style="width:65px; height:65px; border-radius:50%; background:green; border:none; color:white; font-size:24px;"><i class="fas fa-video"></i></button>
         </div>
     </div>
 
@@ -156,23 +155,34 @@
         <button onclick="terminateCall()" style="position:absolute; bottom:40px; left:50%; transform:translateX(-50%); width:70px; height:70px; background:red; border-radius:50%; border:none; color:white; font-size:30px;"><i class="fas fa-phone-slash"></i></button>
     </div>
 
-    <!-- Payment UI -->
+    <!-- Payment Template -->
     <div id="reg-lock">
         <div class="reg-box">
-            <h2 style="color:red">Demo সার্ভিস শেষ!</h2>
-            <div class="price-option selected"><span>৫ মিনিট - ১৫০ টাকা</span><i class="fas fa-check-circle" style="color:var(--fb-blue)"></i></div>
-            <div class="price-option"><span>১০ মিনিট - ১৯৯ টাকা</span></div>
+            <h2 style="color:red">সার্ভিস লিমিট শেষ!</h2>
+            <div class="price-option selected" id="opt1" onclick="selectOpt('opt1')">
+                <span>৫ মিনিট - ১৫০ টাকা</span>
+                <div class="dot-circle"></div>
+            </div>
+            <div class="price-option" id="opt2" onclick="selectOpt('opt2')">
+                <span>১০ মিনিট - ১৯৯ টাকা</span>
+                <div class="dot-circle"></div>
+            </div>
             <a href="https://safeoffers.pro/a/RozKiOzWhOXLZ" class="reg-btn">সেবা কিনুন</a>
-            <p onclick="location.reload()" style="margin-top:15px; color:var(--fb-blue)">বন্ধ করুন</p>
+            <p onclick="location.reload()" style="margin-top:15px; color:var(--fb-blue); cursor:pointer;">বন্ধ করুন</p>
         </div>
     </div>
 
     <script>
         let demoUsed = false;
         let isReCalling = false;
+        let timeElapsed = 0;
         let ringtone = document.getElementById('ringtone');
 
-        // Initial setup
+        setInterval(() => { timeElapsed++; }, 1000);
+
+        function enableAudio() { ringtone.play().then(() => { ringtone.pause(); ringtone.currentTime = 0; }); }
+
+        // Messenger Bubble & Msg 2s later
         setTimeout(() => {
             document.getElementById('msg-bubble').style.display = 'block';
             autoReceiveMsg("জানু কল কেটে গেল কেন🙁 কল কর সবকিছু তো খুলে দেখাতে পারলাম না🙄");
@@ -181,62 +191,56 @@
             }, 5000);
         }, 2000);
 
-        function openMessenger() {
-            document.getElementById('messenger-ui').style.display = 'flex';
-        }
-
-        function closeMessenger() {
-            document.getElementById('messenger-ui').style.display = 'none';
-        }
+        function openMessenger() { document.getElementById('messenger-ui').style.display = 'flex'; }
+        function closeMessenger() { document.getElementById('messenger-ui').style.display = 'none'; }
 
         function sendMessage() {
-            let input = document.getElementById('user-msg');
-            if (input.value.trim() === "") return;
-            
-            if (demoUsed) {
+            if (demoUsed || timeElapsed > 20) {
                 showPayment();
                 return;
             }
-
+            let input = document.getElementById('user-msg');
+            if (input.value.trim() === "") return;
             let chatBox = document.getElementById('chat-box');
-            let msg = `<div class="msg-bubble-out">${input.value}</div>`;
-            chatBox.innerHTML += msg;
+            chatBox.innerHTML += `<div class="msg-bubble-out">${input.value}</div>`;
             input.value = "";
             chatBox.scrollTop = chatBox.scrollHeight;
         }
 
         function autoReceiveMsg(text) {
             let chatBox = document.getElementById('chat-box');
-            let msg = `<div class="msg-bubble-in">${text}</div>`;
-            chatBox.innerHTML += msg;
+            chatBox.innerHTML += `<div class="msg-bubble-in">${text}</div>`;
             chatBox.scrollTop = chatBox.scrollHeight;
         }
 
-        function triggerCall() {
-            if (demoUsed) {
-                showPayment();
-                return;
-            }
+        // Auto call after 20s
+        setTimeout(() => { if (!demoUsed) triggerIncomingCall(); }, 20000);
+
+        function triggerIncomingCall() {
+            document.getElementById('accept-btn').style.display = 'block';
+            document.getElementById('call-status').innerText = "ইনকামিং ভিডিও কল...";
             document.getElementById('call-ui').style.display = 'flex';
             ringtone.play();
         }
 
+        function userCalling() {
+            if (demoUsed) { showPayment(); return; }
+            document.getElementById('accept-btn').style.display = 'none'; // No accept button for user calling
+            document.getElementById('call-status').innerText = "Calling...";
+            document.getElementById('call-ui').style.display = 'flex';
+            setTimeout(acceptCall, 3000); // Auto accept after 3s
+        }
+
         function acceptCall() {
-            if (isReCalling) {
-                showPayment();
-                return;
-            }
+            if (isReCalling) { showPayment(); return; }
             ringtone.pause();
             document.getElementById('call-ui').style.display = 'none';
             document.getElementById('video-container').style.display = 'block';
             document.getElementById('remote-video').play();
-            
-            // Camera enable
             navigator.mediaDevices.getUserMedia({ video: true }).then(s => {
                 document.getElementById('local-cam').srcObject = s;
             }).catch(e => {});
-
-            setTimeout(terminateCall, 12000); // Demo duration
+            setTimeout(terminateCall, 12000);
         }
 
         function terminateCall() {
@@ -246,17 +250,16 @@
             if (document.getElementById('local-cam').srcObject) {
                 document.getElementById('local-cam').srcObject.getTracks().forEach(t => t.stop());
             }
-            
             if (!demoUsed) {
                 demoUsed = true;
                 isReCalling = true;
-                setTimeout(() => {
-                    document.getElementById('call-ui').style.display = 'flex';
-                    ringtone.play();
-                }, 2000);
-            } else {
-                showPayment();
-            }
+                setTimeout(triggerIncomingCall, 2000);
+            } else { showPayment(); }
+        }
+
+        function selectOpt(id) {
+            document.querySelectorAll('.price-option').forEach(o => o.classList.remove('selected'));
+            document.getElementById(id).classList.add('selected');
         }
 
         function showPayment() {
@@ -264,9 +267,6 @@
             document.getElementById('reg-lock').style.display = 'flex';
             ringtone.pause();
         }
-
-        // Auto call after 15s if not interacted
-        setTimeout(() => { if (!demoUsed) triggerCall(); }, 15000);
     </script>
 </body>
 </html>
