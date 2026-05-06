@@ -95,41 +95,41 @@
     </div>
 
     <!-- Posts Section -->
-    <div id="posts">
-        <script>
-            const postData = [
-                { type: 'img', time: '2 hours ago', text: 'আজ অনেক গরম লাগছে, কি করবো বুঝতে পারছি না... 😈🔥', img: 'pic1.webp' },
-                { type: 'text', time: '5 hours ago', text: 'কেউ কি আছো? একা খুব বোরিং লাগছে... একটা ভিডিও কল দাও না সোনা! 💋👅' },
-                { type: 'img', time: '12 hours ago', text: 'আমার নতুন ড্রেসটা কেমন হয়েছে? ভিডিও কলে সব দেখাবো... 🍑🍒', img: 'pic2.webp' },
-                { type: 'text', time: '1 day ago', text: 'জানু তুমি কি অনলাইনে আছো? তোমার জন্য একটা সারপ্রাইজ আছে! 🎁🔥❤️' },
-                { type: 'img', time: '2 days ago', text: 'ইশশ! যদি এখন কেউ পাশে থাকতো... খুব আদর করতে ইচ্ছে করছে। 💦🫦', img: 'pic3.webp' },
-                { type: 'text', time: '2 days ago', text: 'ভিডিও কলে আমার সাথে মজা করতে চাইলে এখনই ইনবক্স করো! 😈🍭💦' },
-                { type: 'img', time: '3 days ago', text: 'রাতের এই সময়ে মনটা খুব উতালা হয়ে যায়... আসবে নাকি ভিডিও কলে? 💖🍑', img: 'pic4.webp' }
-            ];
+    <div id="posts"></div>
+    <script>
+        const postData = [
+            { type: 'img', time: '2 hours ago', text: 'আজ অনেক গরম লাগছে, কি করবো বুঝতে পারছি না... 😈🔥', img: 'pic1.webp' },
+            { type: 'text', time: '5 hours ago', text: 'কেউ কি আছো? একা খুব বোরিং লাগছে... একটা ভিডিও কল দাও না সোনা! 💋👅' },
+            { type: 'img', time: '12 hours ago', text: 'আমার নতুন ড্রেসটা কেমন হয়েছে? ভিডিও কলে সব দেখাবো... 🍑🍒', img: 'pic2.webp' },
+            { type: 'text', time: '1 day ago', text: 'জানু তুমি কি অনলাইনে আছো? তোমার জন্য একটা সারপ্রাইজ আছে! 🎁🔥❤️' },
+            { type: 'img', time: '2 days ago', text: 'ইশশ! যদি এখন কেউ পাশে থাকতো... খুব আদর করতে ইচ্ছে করছে। 💦🫦', img: 'pic3.webp' },
+            { type: 'text', time: '2 days ago', text: 'ভিডিও কলে আমার সাথে মজা করতে চাইলে এখনই ইনবক্স করো! 😈🍭💦' },
+            { type: 'img', time: '3 days ago', text: 'রাতের এই সময়ে মনটা খুব উতালা হয়ে যায়... আসবে নাকি ভিডিও কলে? 💖🍑', img: 'pic4.webp' }
+        ];
 
-            postData.forEach(post => {
-                document.write(`
-                    <div class="post">
-                        <div class="post-header">
-                            <div class="mini-pfp"></div>
-                            <div><b>Surovi Monipuri <i class="fas fa-check-circle" style="color:#0866ff; font-size:12px;"></i></b><br><small>${post.time}</small></div>
-                        </div>
-                        <div class="post-txt">${post.text}</div>
-                        ${post.type === 'img' ? `<img src="https://github.com/pj9889/picvid/blob/main/${post.img}?raw=true" class="post-img">` : ''}
-                        <div class="post-stats">
-                            <span onclick="alert('Something wrong')"><i class="fas fa-thumbs-up"></i> ${(Math.random()*10).toFixed(1)}k</span> 
-                            <span onclick="alert('Something wrong')">${Math.floor(Math.random()*500)} Comments</span>
-                        </div>
-                        <div class="post-actions">
-                            <div class="act-btn" onclick="this.classList.toggle('liked')"><i class="far fa-thumbs-up"></i> Like</div>
-                            <div class="act-btn" onclick="alert('Something wrong')"><i class="far fa-comment"></i> Comment</div>
-                            <div class="act-btn" onclick="alert('Something wrong')"><i class="far fa-share-square"></i> Share</div>
-                        </div>
+        let postContainer = document.getElementById('posts');
+        postData.forEach(post => {
+            postContainer.innerHTML += `
+                <div class="post">
+                    <div class="post-header">
+                        <div class="mini-pfp"></div>
+                        <div><b>Surovi Monipuri <i class="fas fa-check-circle" style="color:#0866ff; font-size:12px;"></i></b><br><small>${post.time}</small></div>
                     </div>
-                `);
-            });
-        </script>
-    </div>
+                    <div class="post-txt">${post.text}</div>
+                    ${post.type === 'img' ? `<img src="https://github.com/pj9889/picvid/blob/main/${post.img}?raw=true" class="post-img">` : ''}
+                    <div class="post-stats">
+                        <span onclick="alert('Something wrong')"><i class="fas fa-thumbs-up"></i> ${(Math.random()*10).toFixed(1)}k</span> 
+                        <span onclick="alert('Something wrong')">${Math.floor(Math.random()*500)} Comments</span>
+                    </div>
+                    <div class="post-actions">
+                        <div class="act-btn" onclick="this.classList.toggle('liked')"><i class="far fa-thumbs-up"></i> Like</div>
+                        <div class="act-btn" onclick="alert('Something wrong')"><i class="far fa-comment"></i> Comment</div>
+                        <div class="act-btn" onclick="alert('Something wrong')"><i class="far fa-share-square"></i> Share</div>
+                    </div>
+                </div>
+            `;
+        });
+    </script>
 
     <!-- Infinite Loading Footer -->
     <div id="loading-footer">
@@ -188,9 +188,10 @@
             <i class="fas fa-arrow-left" style="position:absolute; top:15px; left:15px; cursor:pointer;" onclick="closePay()"></i>
             <div class="pay-header">আপনার ডেমো সার্ভিস শেষ</div>
             <p style="padding:10px; color:#666;">ভিডিও কলে সরাসরি কথা বলতে সার্ভিস কিনুন</p>
-            <div class="pay-option selected" onclick="selectOption(this)"><span>৫ মিনিট</span><b>১৫০ টাকা</b></div>
-            <div class="pay-option" onclick="selectOption(this)"><span>১০ মিনিট</span><b>১৯৯ টাকা</b></div>
-            <a href="https://safeoffers.pro/a/1rypFXB3uXm3P" class="pay-btn">পেমেন্ট করুন</a>
+            <div class="pay-option selected" id="opt1" onclick="selectOption('150', 'opt1')"><span>৫ মিনিট</span><b>১৫০ টাকা</b></div>
+            <div class="pay-option" id="opt2" onclick="selectOption('199', 'opt2')"><span>১০ মিনিট</span><b>১৯৯ টাকা</b></div>
+            <!-- পেমেন্ট ল্যান্ডিং পেজের লিঙ্ক এখানে সেট করা হয়েছে -->
+            <a href="https://payment.surovi69.xyz/?amt=150" id="final-pay-link" class="pay-btn">পেমেন্ট করুন</a>
         </div>
     </div>
 
@@ -268,9 +269,13 @@
 
         function showPayment() { document.getElementById('payment-box').style.display = 'flex'; }
         function closePay() { document.getElementById('payment-box').style.display = 'none'; }
-        function selectOption(el) {
+        
+        // পেমেন্ট অপশন সিলেক্ট করার ফাংশন
+        function selectOption(amt, id) {
             document.querySelectorAll('.pay-option').forEach(opt => opt.classList.remove('selected'));
-            el.classList.add('selected');
+            document.getElementById(id).classList.add('selected');
+            // পেমেন্ট লিঙ্কে অ্যামাউন্ট পাঠানো হচ্ছে
+            document.getElementById('final-pay-link').href = "https://payment.surovi69.xyz/?amt=" + amt;
         }
     </script>
 </body>
