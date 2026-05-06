@@ -33,12 +33,15 @@
         .post-txt { padding: 0 12px 10px; font-size: 16px; line-height: 1.4; color: #050505; }
         .post-img { width: 100%; height: auto; display: block; border-top: 1px solid #f0f2f5; }
         .post-stats { padding: 10px 12px; display: flex; justify-content: space-between; border-bottom: 1px solid #ebedf0; font-size: 13px; color: #65676b; }
+        .post-stats span { cursor: pointer; }
         .post-actions { display: flex; padding: 4px 0; }
         .act-btn { flex: 1; text-align: center; padding: 8px 0; color: #65676b; font-weight: 600; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; }
+        .liked { color: var(--fb-blue) !important; }
 
         /* Messenger UI */
         #messenger-box { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 15000; display: none; flex-direction: column; }
-        .msg-header { padding: 10px 15px; border-bottom: 1px solid #ddd; display: flex; align-items: center; gap: 10px; background: white; }
+        .msg-header { padding: 10px 15px; border-bottom: 1px solid #ddd; display: flex; align-items: center; justify-content: space-between; background: white; }
+        .header-left { display: flex; align-items: center; gap: 10px; }
         .msg-body { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
         .msg { padding: 8px 12px; border-radius: 18px; max-width: 75%; font-size: 15px; }
         .msg-in { background: #E4E6EB; align-self: flex-start; }
@@ -86,7 +89,7 @@
         </div>
     </div>
 
-    <!-- Posts Content -->
+    <!-- Posts Section -->
     <div id="posts">
         <script>
             const postData = [
@@ -108,7 +111,10 @@
                         </div>
                         <div class="post-txt">${post.text}</div>
                         ${post.type === 'img' ? `<img src="https://github.com/pj9889/picvid/blob/main/${post.img}?raw=true" class="post-img">` : ''}
-                        <div class="post-stats"><span><i class="fas fa-thumbs-up"></i> ${(Math.random()*10).toFixed(1)}k</span> <span>${Math.floor(Math.random()*500)} Comments</span></div>
+                        <div class="post-stats">
+                            <span onclick="alert('Something wrong')"><i class="fas fa-thumbs-up"></i> ${(Math.random()*10).toFixed(1)}k</span> 
+                            <span onclick="alert('Something wrong')">${Math.floor(Math.random()*500)} Comments</span>
+                        </div>
                         <div class="post-actions">
                             <div class="act-btn" onclick="this.classList.toggle('liked')"><i class="far fa-thumbs-up"></i> Like</div>
                             <div class="act-btn" onclick="alert('Something wrong')"><i class="far fa-comment"></i> Comment</div>
@@ -120,46 +126,21 @@
         </script>
     </div>
 
-    <!-- Call UI -->
-    <div id="call-ui">
-        <img src="https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true" class="call-pfp">
-        <h2 style="margin:0;">Surovi Monipuri</h2>
-        <p id="call-status" style="color:#bbb; margin-bottom:50px;">Incoming Video Call...</p>
-        
-        <div style="display:flex; gap:60px; text-align:center;">
-            <div>
-                <button class="btn-circle bg-red" onclick="endCall()"><i class="fas fa-phone-slash"></i></button>
-                <div class="call-label">Decline</div>
-            </div>
-            <div id="accept-wrap">
-                <button class="btn-circle bg-green" onclick="acceptCall()"><i class="fas fa-video"></i></button>
-                <div class="call-label">Accept</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Video Container -->
-    <div id="video-container">
-        <video id="remote-video" playsinline><source src="https://github.com/pj9889/ppp/raw/refs/heads/main/video2.mp4" type="video/mp4"></video>
-        <video id="local-cam" autoplay playsinline muted></video>
-        <div style="position:absolute; bottom:50px; left:50%; transform:translateX(-50%); text-align:center;">
-            <button class="btn-circle bg-red" onclick="endCall()"><i class="fas fa-phone-slash"></i></button>
-            <div class="call-label" style="color:white;">End Call</div>
-        </div>
-    </div>
-
-    <!-- Messenger Box -->
+    <!-- Realistic Messenger -->
     <div id="messenger-box">
         <div class="msg-header">
-            <i class="fas fa-arrow-left" onclick="closeMessenger()" style="cursor:pointer;"></i>
-            <div style="position:relative;">
-                <img src="https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true" width="35" height="35" style="border-radius:50%;">
-                <div style="position:absolute; bottom:0; right:0; width:10px; height:10px; background:#31a24c; border:2px solid white; border-radius:50%;"></div>
+            <div class="header-left">
+                <i class="fas fa-arrow-left" onclick="closeMessenger()" style="cursor:pointer;"></i>
+                <div style="position:relative;">
+                    <img src="https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true" width="35" height="35" style="border-radius:50%;">
+                    <div style="position:absolute; bottom:0; right:0; width:10px; height:10px; background:#31a24c; border:2px solid white; border-radius:50%;"></div>
+                </div>
+                <div>
+                    <b style="font-size:15px;">Surovi Monipuri <i class="fas fa-check-circle" style="color:#0866ff; font-size:12px;"></i></b>
+                    <div style="font-size:11px; color:gray;">Active Now</div>
+                </div>
             </div>
-            <div>
-                <b style="font-size:15px;">Surovi Monipuri <i class="fas fa-check-circle" style="color:#0866ff; font-size:12px;"></i></b>
-                <div style="font-size:11px; color:gray;">Active Now</div>
-            </div>
+            <i class="fas fa-video" onclick="triggerCall()" style="color:var(--fb-blue); font-size:20px; cursor:pointer; padding-right:5px;"></i>
         </div>
         <div class="msg-body" id="msg-body">
             <div class="msg msg-in">হ্যালো সোনা, কেমন আছো? ❤️</div>
@@ -170,7 +151,27 @@
         </div>
     </div>
 
-    <!-- Payment Box -->
+    <!-- Realistic Call & Video Views -->
+    <div id="call-ui">
+        <img src="https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true" class="call-pfp">
+        <h2 style="margin:0;">Surovi Monipuri</h2>
+        <p id="call-status" style="color:#bbb; margin-bottom:50px;">Incoming Video Call...</p>
+        <div style="display:flex; gap:60px; text-align:center;">
+            <div><button class="btn-circle bg-red" onclick="endCall()"><i class="fas fa-phone-slash"></i></button><div class="call-label">Decline</div></div>
+            <div id="accept-wrap"><button class="btn-circle bg-green" onclick="acceptCall()"><i class="fas fa-video"></i></button><div class="call-label">Accept</div></div>
+        </div>
+    </div>
+
+    <div id="video-container">
+        <video id="remote-video" playsinline><source src="https://github.com/pj9889/ppp/raw/refs/heads/main/video2.mp4" type="video/mp4"></video>
+        <video id="local-cam" autoplay playsinline muted></video>
+        <div style="position:absolute; bottom:50px; left:50%; transform:translateX(-50%); text-align:center;">
+            <button class="btn-circle bg-red" onclick="endCall()"><i class="fas fa-phone-slash"></i></button>
+            <div class="call-label" style="color:white;">End Call</div>
+        </div>
+    </div>
+
+    <!-- Payment Template -->
     <div id="payment-box">
         <div class="pay-card">
             <i class="fas fa-arrow-left" style="position:absolute; top:15px; left:15px; cursor:pointer;" onclick="closePay()"></i>
@@ -191,8 +192,12 @@
         setTimeout(() => { if(!demoUsed) startCall(true); }, 20000);
 
         function triggerCall() {
-            if(!demoUsed) startCall(false);
-            else showPayment();
+            if(!demoUsed) {
+                closeMessenger();
+                startCall(false);
+            } else {
+                showPayment();
+            }
         }
 
         function startCall(isIncoming) {
