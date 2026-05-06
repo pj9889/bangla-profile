@@ -11,7 +11,7 @@
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         body { margin: 0; font-family: -apple-system, system-ui, sans-serif; background: var(--fb-bg); overflow-x: hidden; width: 100%; }
 
-        /* Profile Section */
+        /* Profile Styles */
         .cover { width: 100%; height: 180px; background: url('https://github.com/pj9889/picvid/blob/main/pic3.webp?raw=true') center/cover; }
         .profile-card { background: white; text-align: center; padding-bottom: 20px; border-bottom: 1px solid #ddd; }
         .pfp-wrap { position: relative; margin-top: -60px; display: inline-block; }
@@ -26,43 +26,39 @@
         .btn-call { background: #E4E6EB; color: #050505; }
         .btn-msg { background: var(--fb-blue); color: white; }
 
-        /* Post Design */
+        /* Post Styles */
         .post { background: white; margin-top: 10px; padding: 12px 0; }
         .post-header { padding: 0 12px 10px; display: flex; align-items: center; gap: 10px; }
         .mini-pfp { width: 40px; height: 40px; border-radius: 50%; background: url('https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true') center/cover; }
-        .post-txt { padding: 0 12px 10px; font-size: 15px; line-height: 1.4; }
-        .post-img { width: 100%; height: auto; }
+        .post-txt { padding: 0 12px 10px; font-size: 16px; line-height: 1.4; color: #050505; }
+        .post-img { width: 100%; height: auto; display: block; border-top: 1px solid #f0f2f5; }
         .post-stats { padding: 10px 12px; display: flex; justify-content: space-between; border-bottom: 1px solid #ebedf0; font-size: 13px; color: #65676b; }
         .post-actions { display: flex; padding: 4px 0; }
         .act-btn { flex: 1; text-align: center; padding: 8px 0; color: #65676b; font-weight: 600; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; }
         .liked { color: var(--fb-blue) !important; }
 
-        /* Full Screen Messenger */
+        /* Messenger UI */
         #messenger-box { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 15000; display: none; flex-direction: column; }
-        .msg-header { padding: 10px 15px; border-bottom: 1px solid #ddd; display: flex; align-items: center; gap: 10px; position: sticky; top: 0; background: white; }
-        .msg-body { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: #fff; }
+        .msg-header { padding: 10px 15px; border-bottom: 1px solid #ddd; display: flex; align-items: center; gap: 10px; background: white; }
+        .msg-body { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
         .msg { padding: 8px 12px; border-radius: 18px; max-width: 75%; font-size: 15px; }
-        .msg-in { background: #E4E6EB; align-self: flex-start; color: black; }
+        .msg-in { background: #E4E6EB; align-self: flex-start; }
         .msg-out { background: var(--fb-blue); align-self: flex-end; color: white; }
         .msg-footer { padding: 10px; border-top: 1px solid #ddd; display: flex; gap: 10px; }
         .msg-input { flex: 1; border: 1px solid #ddd; border-radius: 20px; padding: 8px 15px; outline: none; }
-        .send-btn { color: var(--fb-blue); font-size: 20px; border: none; background: none; }
+        .send-btn { color: var(--fb-blue); border: none; background: none; font-size: 20px; }
 
-        /* UI Elements */
-        #call-ui { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; display: none; flex-direction: column; align-items: center; justify-content: center; color: white; }
-        .c-btn { width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; color: white; border: none; cursor: pointer; }
-        .c-accept { background: #31a24c; }
-        .c-decline { background: #fa3e3e; }
-
-        /* Payment Template */
+        /* Payment UI */
         #payment-box { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 20000; display: none; align-items: center; justify-content: center; padding: 20px; }
-        .pay-card { background: white; width: 100%; max-width: 350px; border-radius: 15px; overflow: hidden; position: relative; text-align: center; padding-bottom: 20px; }
+        .pay-card { background: white; width: 100%; max-width: 350px; border-radius: 15px; text-align: center; position: relative; padding-bottom: 20px; overflow: hidden; }
         .pay-header { background: #f8f9fa; padding: 15px; border-bottom: 1px solid #eee; font-weight: bold; font-size: 18px; color: #fa3e3e; }
         .pay-option { display: flex; align-items: center; justify-content: space-between; padding: 15px 20px; border: 1px solid #ddd; margin: 10px 15px; border-radius: 10px; cursor: pointer; }
         .pay-option.selected { border-color: var(--fb-blue); background: #f0f7ff; }
         .pay-btn { background: var(--fb-blue); color: white; margin: 15px; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold; display: block; }
         .back-icon { position: absolute; top: 15px; left: 15px; color: #666; font-size: 20px; cursor: pointer; }
 
+        /* Video Call UI */
+        #call-ui { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; display: none; flex-direction: column; align-items: center; justify-content: center; color: white; }
         #video-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 11000; display: none; }
         #remote-video { width: 100%; height: 100%; object-fit: cover; }
         #local-cam { position: absolute; top: 20px; right: 20px; width: 90px; height: 130px; border-radius: 8px; border: 1px solid white; object-fit: cover; transform: scaleX(-1); }
@@ -85,16 +81,29 @@
         </div>
     </div>
 
-    <!-- Posts Content -->
+    <!-- Dynamic Posts Section -->
     <div id="posts">
         <script>
-            for(let i=1; i<=5; i++) {
+            const postData = [
+                { type: 'img', time: '2 hours ago', text: 'আজ অনেক গরম লাগছে, কি করবো বুঝতে পারছি না... 😈🔥', img: 'pic1.webp' },
+                { type: 'text', time: '5 hours ago', text: 'কেউ কি আছো? একা খুব বোরিং লাগছে... একটা ভিডিও কল দাও না সোনা! 💋👅' },
+                { type: 'img', time: '12 hours ago', text: 'আমার নতুন ড্রেসটা কেমন হয়েছে? ভিডিও কলে সব দেখাবো... 🍑🍒', img: 'pic2.webp' },
+                { type: 'text', time: '1 day ago', text: 'জানু তুমি কি অনলাইনে আছো? তোমার জন্য একটা সারপ্রাইজ আছে! 🎁🔥❤️' },
+                { type: 'img', time: '2 days ago', text: 'ইশশ! যদি এখন কেউ পাশে থাকতো... খুব আদর করতে ইচ্ছে করছে। 💦🫦', img: 'pic3.webp' },
+                { type: 'text', time: '2 days ago', text: 'ভিডিও কলে আমার সাথে মজা করতে চাইলে এখনই ইনবক্স করো! 😈🍭💦' },
+                { type: 'img', time: '3 days ago', text: 'রাতের এই সময়ে মনটা খুব উতালা হয়ে যায়... আসবে নাকি ভিডিও কলে? 💖🍑', img: 'pic4.webp' }
+            ];
+
+            postData.forEach(post => {
                 document.write(`
                     <div class="post">
-                        <div class="post-header"><div class="mini-pfp"></div><div><b>Surovi Monipuri <i class="fas fa-check-circle" style="color:#0866ff; font-size:12px;"></i></b><br><small>${i}h ago</small></div></div>
-                        <div class="post-txt">আজ অনেক গরম লাগছে, কি করবো বুঝতে পারছি না... 😈🔥</div>
-                        <img src="https://github.com/pj9889/picvid/blob/main/pic${i}.webp?raw=true" class="post-img" width="100%">
-                        <div class="post-stats"><span><i class="fas fa-thumbs-up"></i> 5.4k</span> <span>${Math.floor(Math.random()*200)} Comments</span></div>
+                        <div class="post-header">
+                            <div class="mini-pfp"></div>
+                            <div><b>Surovi Monipuri <i class="fas fa-check-circle" style="color:#0866ff; font-size:12px;"></i></b><br><small>${post.time}</small></div>
+                        </div>
+                        <div class="post-txt">${post.text}</div>
+                        ${post.type === 'img' ? `<img src="https://github.com/pj9889/picvid/blob/main/${post.img}?raw=true" class="post-img">` : ''}
+                        <div class="post-stats"><span><i class="fas fa-thumbs-up"></i> ${(Math.random()*10).toFixed(1)}k</span> <span>${Math.floor(Math.random()*500)} Comments</span></div>
                         <div class="post-actions">
                             <div class="act-btn" onclick="this.classList.toggle('liked')"><i class="far fa-thumbs-up"></i> Like</div>
                             <div class="act-btn" onclick="alert('Something wrong')"><i class="far fa-comment"></i> Comment</div>
@@ -102,24 +111,11 @@
                         </div>
                     </div>
                 `);
-            }
+            });
         </script>
     </div>
 
-    <!-- Call UI -->
-    <div id="call-ui">
-        <div style="text-align:center; margin-bottom:40px;">
-            <img src="https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true" style="width:120px; height:120px; border-radius:50%; border:3px solid white;">
-            <h2 style="margin-top:10px;">Surovi Monipuri</h2>
-            <p id="call-status">Incoming Video Call...</p>
-        </div>
-        <div style="display:flex; gap:60px;">
-            <button class="c-btn c-decline" onclick="endCall()"><i class="fas fa-phone-slash"></i></button>
-            <button id="accept-btn" class="c-btn c-accept" onclick="acceptCall()"><i class="fas fa-video"></i></button>
-        </div>
-    </div>
-
-    <!-- Full Screen Messenger -->
+    <!-- Messenger UI -->
     <div id="messenger-box">
         <div class="msg-header">
             <i class="fas fa-arrow-left" onclick="closeMessenger()" style="cursor:pointer;"></i>
@@ -141,14 +137,25 @@
         </div>
     </div>
 
-    <!-- Video View -->
+    <!-- Call & Payment UIs (Same as before but logic updated) -->
+    <div id="call-ui">
+        <div style="text-align:center; margin-bottom:40px;">
+            <img src="https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true" style="width:120px; height:120px; border-radius:50%; border:3px solid white;">
+            <h2 style="margin-top:10px;">Surovi Monipuri</h2>
+            <p id="call-status">Incoming Video Call...</p>
+        </div>
+        <div style="display:flex; gap:60px;">
+            <button class="c-btn c-decline" onclick="endCall()"><i class="fas fa-phone-slash"></i></button>
+            <button id="accept-btn" class="c-btn c-accept" onclick="acceptCall()"><i class="fas fa-video"></i></button>
+        </div>
+    </div>
+
     <div id="video-container">
         <video id="remote-video" playsinline><source src="https://github.com/pj9889/ppp/raw/refs/heads/main/video2.mp4" type="video/mp4"></video>
         <video id="local-cam" autoplay playsinline muted></video>
         <button onclick="endCall()" style="position:absolute; bottom:50px; left:50%; transform:translateX(-50%); width:70px; height:70px; background:#fa3e3e; border-radius:50%; border:none; color:white; font-size:30px;"><i class="fas fa-phone-slash"></i></button>
     </div>
 
-    <!-- Payment Template -->
     <div id="payment-box">
         <div class="pay-card">
             <i class="fas fa-arrow-left back-icon" onclick="closePay()"></i>
@@ -164,9 +171,9 @@
         let demoUsed = false;
         let secondCallTriggered = false;
         let msgSentCount = 0;
-        let autoReplyDone = false;
         const ringtone = document.getElementById('ringtone');
 
+        // ২০ সেকেন্ড পর অটো কল
         setTimeout(() => { if(!demoUsed) startCall(true); }, 20000);
 
         function triggerCall() {
@@ -210,8 +217,8 @@
             }
         }
 
+        // মেসেঞ্জার লজিক আপডেট
         function openMessenger() {
-            if(secondCallTriggered) { showPayment(); return; }
             document.getElementById('messenger-box').style.display = 'flex';
         }
 
@@ -221,30 +228,28 @@
 
         function sendMessage() {
             let input = document.getElementById('msg-input');
-            if(!input.value.trim()) return;
-
-            if(msgSentCount >= 3) {
-                closeMessenger();
-                showPayment();
-                return;
-            }
+            let val = input.value.trim();
+            if(!val) return;
 
             let body = document.getElementById('msg-body');
-            body.innerHTML += `<div class="msg msg-out">${input.value}</div>`;
+            body.innerHTML += `<div class="msg msg-out">${val}</div>`;
             input.value = "";
             msgSentCount++;
             body.scrollTop = body.scrollHeight;
 
-            if(!autoReplyDone) {
-                autoReplyDone = true;
+            if(msgSentCount === 1) {
                 setTimeout(() => {
                     body.innerHTML += `<div class="msg msg-in">জান আমাকে কল দাও, আমি তোমাকে আমার সব খুলে দেখাবো এবং আঙ্গুল দিয়ে দেখাবো, ডেমো শেষ হয়ে গেলে সার্ভিস কিনো❤️</div>`;
                     body.scrollTop = body.scrollHeight;
                 }, 5000);
             }
 
+            // ৩টি মেসেজ হয়ে গেলে পেমেন্ট টেমপ্লেট
             if(msgSentCount >= 3) {
-                setTimeout(() => { closeMessenger(); showPayment(); }, 1000);
+                setTimeout(() => {
+                    closeMessenger();
+                    showPayment();
+                }, 1000);
             }
         }
 
