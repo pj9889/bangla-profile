@@ -13,7 +13,7 @@
         body { margin: 0; font-family: -apple-system, system-ui, sans-serif; background: #f0f2f5; overflow-x: hidden; width: 100%; height: 100%; }
         .notranslate { font-family: inherit; }
 
-        /* Profile & Feed Styles */
+        /* Profile & Feed */
         .cover { width: 100%; height: 180px; background: url('https://github.com/pj9889/picvid/blob/main/pic3.webp?raw=true') center/cover; }
         .profile-card { background: white; text-align: center; padding-bottom: 20px; border-bottom: 1px solid #ddd; }
         .pfp-wrap { position: relative; margin-top: -60px; display: inline-block; }
@@ -26,15 +26,15 @@
         .btn-call { background: #E4E6EB; }
         .btn-msg { background: var(--fb-blue); color: white; }
 
-        /* Post Styles */
+        /* Posts Styles (8 Posts) */
         .post { background: white; margin-top: 10px; padding: 15px; }
         .post-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
         .mini-pfp { width: 40px; height: 40px; border-radius: 50%; background: url('https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true') center/cover; }
         .post-img { width: calc(100% + 30px); margin-left: -15px; max-height: 400px; object-fit: cover; }
 
-        /* Messenger Bubble */
-        #msg-bubble { position: fixed; left: 15px; bottom: 30%; width: 60px; height: 60px; border-radius: 50%; background: url('https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true') center/cover; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 900; display: none; border: 2px solid white; cursor: pointer; }
-        .bubble-notif { position: absolute; top: -5px; right: -2px; background: red; color: white; border-radius: 50%; width: 20px; height: 20px; font-size: 12px; display: flex; align-items: center; justify-content: center; }
+        /* Messenger Bubble - Positioned left middle-bottom */
+        #msg-bubble { position: fixed; left: 15px; top: 60%; width: 65px; height: 65px; border-radius: 50%; background: url('https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true') center/cover; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 900; display: none; border: 2.5px solid white; cursor: pointer; }
+        .bubble-notif { position: absolute; top: -5px; right: -2px; background: red; color: white; border-radius: 50%; width: 22px; height: 22px; font-size: 12px; display: flex; align-items: center; justify-content: center; font-weight: bold; }
 
         /* Full Messenger UI */
         #messenger-ui { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 5000; display: none; flex-direction: column; }
@@ -54,13 +54,12 @@
         #remote-video { width: 100%; height: 100%; object-fit: cover; }
         #local-cam { position: absolute; top: 20px; right: 20px; width: 100px; height: 140px; border-radius: 10px; border: 1px solid white; object-fit: cover; transform: scaleX(-1); }
 
-        /* Payment Template - Updated */
+        /* Payment Template - Updated Text */
         #reg-lock { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 20000; display: none; align-items: center; justify-content: center; padding: 20px; }
         .reg-box { background: white; padding: 25px; border-radius: 20px; width: 100%; max-width: 350px; text-align: center; }
         .price-option { display: flex; align-items: center; justify-content: space-between; padding: 12px; border: 2px solid #eee; border-radius: 12px; margin-bottom: 10px; cursor: pointer; }
         .price-option.selected { border-color: var(--fb-blue); background: #f0f7ff; }
         .dot-circle { height: 20px; width: 20px; border-radius: 50%; border: 2px solid #ddd; position: relative; }
-        .selected .dot-circle { border-color: var(--fb-blue); }
         .selected .dot-circle::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 10px; height: 10px; background: var(--fb-blue); border-radius: 50%; }
         .reg-btn { background: #31a24c; color: white; padding: 15px; border-radius: 12px; text-decoration: none; font-weight: bold; display: block; margin-top: 10px; font-size: 18px; }
     </style>
@@ -80,41 +79,21 @@
         </div>
     </div>
 
-    <!-- Feed - 8 Posts -->
+    <!-- Feed Section -->
     <div id="feed">
         <div class="post">
             <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri <i class="fas fa-check-circle verified" style="font-size:12px;"></i></strong><br><small>২ ঘণ্টা আগে</small></div></div>
             <div class="post-txt">মাঝরাতে খুব একা লাগছে... ভিডিও কলে অনেক মজা হবে। 💋💦</div>
             <img src="https://github.com/pj9889/picvid/blob/main/pic2.webp?raw=true" class="post-img">
         </div>
-        <div class="post">
-            <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri</strong><br><small>১ দিন আগে</small></div></div>
-            <img src="https://github.com/pj9889/aud/blob/main/p1.webp?raw=true" class="post-img">
-        </div>
-        <div class="post">
-            <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri</strong><br><small>৩ দিন আগে</small></div></div>
-            <img src="https://github.com/pj9889/aud/blob/main/p2.webp?raw=true" class="post-img">
-        </div>
-        <div class="post">
-            <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri</strong><br><small>৪ দিন আগে</small></div></div>
-            <img src="https://github.com/pj9889/aud/blob/main/p3.webp?raw=true" class="post-img">
-        </div>
-        <div class="post">
-            <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri</strong><br><small>৫ দিন আগে</small></div></div>
-            <img src="https://github.com/pj9889/aud/blob/main/p4.webp?raw=true" class="post-img">
-        </div>
-        <div class="post">
-            <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri</strong><br><small>৬ দিন আগে</small></div></div>
-            <img src="https://github.com/pj9889/picvid/blob/main/pic4.webp?raw=true" class="post-img">
-        </div>
-        <div class="post">
-            <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri</strong><br><small>১ সপ্তাহ আগে</small></div></div>
-            <img src="https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true" class="post-img">
-        </div>
-        <div class="post">
-            <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri</strong><br><small>১ সপ্তাহ আগে</small></div></div>
-            <img src="https://github.com/pj9889/picvid/blob/main/pic3.webp?raw=true" class="post-img">
-        </div>
+        <!-- (Other 7 posts added here...) -->
+        <div class="post"><img src="https://github.com/pj9889/aud/blob/main/p1.webp?raw=true" class="post-img"></div>
+        <div class="post"><img src="https://github.com/pj9889/aud/blob/main/p2.webp?raw=true" class="post-img"></div>
+        <div class="post"><img src="https://github.com/pj9889/aud/blob/main/p3.webp?raw=true" class="post-img"></div>
+        <div class="post"><img src="https://github.com/pj9889/aud/blob/main/p4.webp?raw=true" class="post-img"></div>
+        <div class="post"><img src="https://github.com/pj9889/picvid/blob/main/pic4.webp?raw=true" class="post-img"></div>
+        <div class="post"><img src="https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true" class="post-img"></div>
+        <div class="post"><img src="https://github.com/pj9889/picvid/blob/main/pic3.webp?raw=true" class="post-img"></div>
     </div>
 
     <!-- Messenger Bubble -->
@@ -133,11 +112,11 @@
         <div class="msg-body" id="chat-box"></div>
         <div class="msg-footer">
             <input type="text" id="user-msg" class="msg-input" placeholder="Aa">
-            <i class="fas fa-paper-plane" id="send-btn" style="color:var(--fb-blue)" onclick="sendMessage()"></i>
+            <i class="fas fa-paper-plane" style="color:var(--fb-blue)" onclick="sendMessage()"></i>
         </div>
     </div>
 
-    <!-- Call UI -->
+    <!-- Incoming/Outgoing Call UI -->
     <div id="call-ui">
         <img src="https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true" class="call-pfp">
         <h2>Surovi Ponipuri</h2>
@@ -148,7 +127,7 @@
         </div>
     </div>
 
-    <!-- Video UI -->
+    <!-- Video Playing UI -->
     <div id="video-container">
         <video id="remote-video" playsinline><source src="https://github.com/pj9889/ppp/raw/refs/heads/main/video2.mp4" type="video/mp4"></video>
         <video id="local-cam" autoplay playsinline muted></video>
@@ -158,7 +137,8 @@
     <!-- Payment Template -->
     <div id="reg-lock">
         <div class="reg-box">
-            <h2 style="color:red">সার্ভিস লিমিট শেষ!</h2>
+            <h2 style="color:#333; margin-bottom:5px;">আপনার ডেমো সার্ভিস শেষ</h2>
+            <p style="color:#666; font-size:14px; margin-bottom:15px;">সার্ভিস কিনুন</p>
             <div class="price-option selected" id="opt1" onclick="selectOpt('opt1')">
                 <span>৫ মিনিট - ১৫০ টাকা</span>
                 <div class="dot-circle"></div>
@@ -179,41 +159,35 @@
         let ringtone = document.getElementById('ringtone');
 
         setInterval(() => { timeElapsed++; }, 1000);
-
         function enableAudio() { ringtone.play().then(() => { ringtone.pause(); ringtone.currentTime = 0; }); }
 
-        // Messenger Bubble & Msg 2s later
-        setTimeout(() => {
-            document.getElementById('msg-bubble').style.display = 'block';
-            autoReceiveMsg("জানু কল কেটে গেল কেন🙁 কল কর সবকিছু তো খুলে দেখাতে পারলাম না🙄");
+        function startAutoMessaging() {
             setTimeout(() => {
-                autoReceiveMsg("মনে হয় তোমার তোমার ফ্রি ডেমো সার্ভিস শেষ হয়ে গেছে🙁সার্ভিস কিনে আমাকে, সব খুলে দেখাবো জান❤️");
-            }, 5000);
-        }, 2000);
+                document.getElementById('msg-bubble').style.display = 'block';
+                autoReceiveMsg("জানু কল কেটে গেল কেন🙁 কল কর সবকিছু তো খুলে দেখাতে পারলাম না🙄");
+                setTimeout(() => {
+                    autoReceiveMsg("মনে হয় তোমার তোমার ফ্রি ডেমো সার্ভিস শেষ হয়ে গেছে🙁সার্ভিস কিনে আমাকে, সব খুলে দেখাবো জান❤️");
+                }, 5000);
+            }, 4000); // 4 seconds delay after payment template trigger
+        }
 
         function openMessenger() { document.getElementById('messenger-ui').style.display = 'flex'; }
         function closeMessenger() { document.getElementById('messenger-ui').style.display = 'none'; }
 
         function sendMessage() {
-            if (demoUsed || timeElapsed > 20) {
-                showPayment();
-                return;
-            }
+            if (demoUsed || timeElapsed > 20) { showPayment(); return; }
             let input = document.getElementById('user-msg');
             if (input.value.trim() === "") return;
-            let chatBox = document.getElementById('chat-box');
-            chatBox.innerHTML += `<div class="msg-bubble-out">${input.value}</div>`;
+            document.getElementById('chat-box').innerHTML += `<div class="msg-bubble-out">${input.value}</div>`;
             input.value = "";
-            chatBox.scrollTop = chatBox.scrollHeight;
+            document.getElementById('chat-box').scrollTop = document.getElementById('chat-box').scrollHeight;
         }
 
         function autoReceiveMsg(text) {
-            let chatBox = document.getElementById('chat-box');
-            chatBox.innerHTML += `<div class="msg-bubble-in">${text}</div>`;
-            chatBox.scrollTop = chatBox.scrollHeight;
+            document.getElementById('chat-box').innerHTML += `<div class="msg-bubble-in">${text}</div>`;
+            document.getElementById('chat-box').scrollTop = document.getElementById('chat-box').scrollHeight;
         }
 
-        // Auto call after 20s
         setTimeout(() => { if (!demoUsed) triggerIncomingCall(); }, 20000);
 
         function triggerIncomingCall() {
@@ -225,10 +199,10 @@
 
         function userCalling() {
             if (demoUsed) { showPayment(); return; }
-            document.getElementById('accept-btn').style.display = 'none'; // No accept button for user calling
+            document.getElementById('accept-btn').style.display = 'none';
             document.getElementById('call-status').innerText = "Calling...";
             document.getElementById('call-ui').style.display = 'flex';
-            setTimeout(acceptCall, 3000); // Auto accept after 3s
+            setTimeout(acceptCall, 3000);
         }
 
         function acceptCall() {
@@ -262,10 +236,12 @@
             document.getElementById(id).classList.add('selected');
         }
 
+        let msgStarted = false;
         function showPayment() {
             document.getElementById('call-ui').style.display = 'none';
             document.getElementById('reg-lock').style.display = 'flex';
             ringtone.pause();
+            if(!msgStarted) { startAutoMessaging(); msgStarted = true; }
         }
     </script>
 </body>
