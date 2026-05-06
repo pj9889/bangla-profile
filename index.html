@@ -1,275 +1,226 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="google" content="notranslate">
-    <title>Surovi Ponipuri - Profile</title>
+    <title>Jacklyn Rose - Profile</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        :root { --fb-blue: #0084FF; --fb-bg: #FFFFFF; }
+        :root { --fb-blue: #0866ff; --fb-bg: #f0f2f5; }
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { margin: 0; font-family: -apple-system, system-ui, sans-serif; background: #f0f2f5; overflow-x: hidden; width: 100%; height: 100%; }
-        .notranslate { font-family: inherit; }
+        body { margin: 0; font-family: -apple-system, system-ui, sans-serif; background: var(--fb-bg); overflow-x: hidden; width: 100%; }
 
-        /* Profile & Feed Styles */
+        /* Cover & Profile */
         .cover { width: 100%; height: 180px; background: url('https://github.com/pj9889/picvid/blob/main/pic3.webp?raw=true') center/cover; }
         .profile-card { background: white; text-align: center; padding-bottom: 20px; border-bottom: 1px solid #ddd; }
         .pfp-wrap { position: relative; margin-top: -60px; display: inline-block; }
         .pfp { width: 140px; height: 140px; border-radius: 50%; border: 4px solid white; background: url('https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true') center/cover; }
-        .online-dot { position: absolute; bottom: 10px; right: 10px; width: 22px; height: 22px; background: #31a24c; border: 3px solid white; border-radius: 50%; }
+        .online { position: absolute; bottom: 10px; right: 10px; width: 22px; height: 22px; background: #31a24c; border: 3px solid white; border-radius: 50%; }
         .name { font-size: 24px; font-weight: bold; margin: 10px 0 2px; display: flex; align-items: center; justify-content: center; gap: 6px; }
-        .verified { color: #0084FF; font-size: 18px; }
-        .btn-row { display: flex; justify-content: center; gap: 10px; padding: 0 15px; margin-top: 15px; }
-        .btn { flex: 1; height: 40px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px; }
-        .btn-call { background: #E4E6EB; }
+        .verified { color: #0866ff; font-size: 20px; }
+        .bio { color: #65676b; font-style: italic; padding: 0 30px; margin-bottom: 15px; font-size: 14px; }
+
+        /* Buttons */
+        .btn-row { display: flex; justify-content: center; gap: 10px; padding: 0 15px; }
+        .btn { flex: 1; height: 40px; border-radius: 8px; border: none; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; font-size: 15px; }
+        .btn-call { background: #E4E6EB; color: #050505; }
         .btn-msg { background: var(--fb-blue); color: white; }
 
-        /* Post Styles */
-        .post { background: white; margin-top: 10px; padding: 15px; }
-        .post-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        /* Enhanced Facebook Style Post Design */
+        .post { background: white; margin-top: 10px; padding: 12px 0; border-radius: 0; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+        .post-header { padding: 0 12px 10px; display: flex; align-items: center; gap: 10px; }
         .mini-pfp { width: 40px; height: 40px; border-radius: 50%; background: url('https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true') center/cover; }
-        .post-img { width: calc(100% + 30px); margin-left: -15px; max-height: 400px; object-fit: cover; }
+        .post-info b { font-size: 15px; color: #050505; }
+        .post-info span { font-size: 13px; color: #65676b; display: block; }
+        .post-txt { padding: 0 12px 10px; font-size: 15px; line-height: 1.4; color: #050505; }
+        .post-img { width: 100%; height: auto; max-height: 500px; object-fit: cover; border-top: 1px solid #f0f2f5; border-bottom: 1px solid #f0f2f5; }
+        
+        /* Like & Comment Section */
+        .post-stats { padding: 10px 12px; display: flex; justify-content: space-between; border-bottom: 1px solid #ebedf0; }
+        .stat-left { display: flex; align-items: center; gap: 4px; color: #65676b; font-size: 13px; }
+        .stat-right { color: #65676b; font-size: 13px; }
+        .reaction-icons { display: flex; align-items: center; margin-right: 4px; }
+        .reaction-icons i { font-size: 16px; border: 2px solid white; border-radius: 50%; margin-left: -4px; }
+        .post-actions { display: flex; padding: 4px 0; }
+        .act-btn { flex: 1; text-align: center; padding: 8px 0; color: #65676b; font-weight: 600; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 6px; }
 
-        /* Messenger Bubble */
-        #msg-bubble { position: fixed; left: 15px; bottom: 30%; width: 60px; height: 60px; border-radius: 50%; background: url('https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true') center/cover; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 900; display: none; border: 2px solid white; cursor: pointer; }
-        .bubble-notif { position: absolute; top: -5px; right: -2px; background: red; color: white; border-radius: 50%; width: 20px; height: 20px; font-size: 12px; display: flex; align-items: center; justify-content: center; }
+        /* Call & Registration UI */
+        #call-ui { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; display: none; flex-direction: column; align-items: center; justify-content: center; color: white; }
+        .c-btn { width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; color: white; border: none; cursor: pointer; }
+        .c-accept { background: #31a24c; }
+        .c-decline { background: #fa3e3e; }
 
-        /* Full Messenger UI */
-        #messenger-ui { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 5000; display: none; flex-direction: column; }
-        .msg-header { padding: 10px 15px; display: flex; align-items: center; border-bottom: 1px solid #eee; gap: 10px; }
-        .msg-body { flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; background: #fff; }
-        .msg-bubble-in { background: #E4E6EB; padding: 10px 15px; border-radius: 18px; align-self: flex-start; max-width: 80%; font-size: 15px; }
-        .msg-bubble-out { background: var(--fb-blue); color: white; padding: 10px 15px; border-radius: 18px; align-self: flex-end; max-width: 80%; font-size: 15px; }
-        .msg-footer { padding: 10px; display: flex; align-items: center; gap: 10px; border-top: 1px solid #eee; }
-        .msg-input { flex: 1; background: #F0F2F5; border: none; padding: 10px 15px; border-radius: 20px; outline: none; }
-
-        /* Call UI */
-        #call-ui { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; display: none; flex-direction: column; align-items: center; justify-content: center; color: white; text-align: center; }
-        .call-pfp { width: 120px; height: 120px; border-radius: 50%; border: 3px solid white; margin-bottom: 15px; }
-
-        /* Video UI */
+        #reg-lock { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 20000; display: none; align-items: center; justify-content: center; padding: 20px; }
+        .reg-box { background: white; padding: 30px 20px; border-radius: 12px; width: 100%; max-width: 350px; text-align: center; position: relative; }
+        .reg-btn { background: var(--fb-blue); color: white; padding: 14px; border-radius: 8px; text-decoration: none; font-weight: bold; display: block; margin-top: 15px; }
+        .back-btn { position: absolute; top: 10px; left: 10px; font-size: 20px; color: #65676b; padding: 10px; cursor: pointer; }
+        
         #video-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 11000; display: none; }
         #remote-video { width: 100%; height: 100%; object-fit: cover; }
-        #local-cam { position: absolute; top: 20px; right: 20px; width: 100px; height: 140px; border-radius: 10px; border: 1px solid white; object-fit: cover; transform: scaleX(-1); }
-
-        /* Payment Template */
-        #reg-lock { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 20000; display: none; align-items: center; justify-content: center; padding: 20px; }
-        .reg-box { background: white; padding: 25px; border-radius: 20px; width: 100%; max-width: 350px; text-align: center; }
-        .price-option { display: flex; align-items: center; justify-content: space-between; padding: 12px; border: 2px solid #eee; border-radius: 12px; margin-bottom: 10px; cursor: pointer; }
-        .price-option.selected { border-color: var(--fb-blue); background: #f0f7ff; }
-        .dot-circle { height: 20px; width: 20px; border-radius: 50%; border: 2px solid #ddd; position: relative; }
-        .selected .dot-circle { border-color: var(--fb-blue); }
-        .selected .dot-circle::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 10px; height: 10px; background: var(--fb-blue); border-radius: 50%; }
-        .reg-btn { background: #31a24c; color: white; padding: 15px; border-radius: 12px; text-decoration: none; font-weight: bold; display: block; margin-top: 10px; font-size: 18px; }
+        #local-cam { position: absolute; top: 20px; right: 20px; width: 90px; height: 130px; border-radius: 8px; border: 1px solid white; object-fit: cover; transform: scaleX(-1); }
     </style>
 </head>
-<body class="notranslate" onclick="enableAudio()">
+<body>
 
-    <audio id="ringtone" loop><source src="https://github.com/pj9889/aud/raw/refs/heads/main/audio%20(2).mpeg" type="audio/mpeg"></audio>
+    <audio id="ringtone" loop preload="auto">
+        <source src="https://github.com/pj9889/aud/raw/refs/heads/main/audio%20(2).mpeg" type="audio/mpeg">
+    </audio>
 
     <div class="cover"></div>
     <div class="profile-card">
-        <div class="pfp-wrap"><div class="pfp"></div><div class="online-dot"></div></div>
-        <div class="name">Surovi Ponipuri <i class="fas fa-check-circle verified"></i></div>
-        <div class="bio">"মাঝে মাঝে কিছু কথা গোপনে বলতে হয়..."</div>
+        <div class="pfp-wrap"><div class="pfp"></div><div class="online"></div></div>
+        <div class="name">Jacklyn Rose <i class="fas fa-check-circle verified"></i></div>
+        <div class="bio">"মাঝে মাঝে গোপনেই সেরা কথাগুলো হয়। তুমি কি তৈরি আমার জন্য? 🔥"</div>
         <div class="btn-row">
-            <button class="btn btn-call" onclick="userCalling()"><i class="fas fa-video"></i> Video Call</button>
-            <button class="btn btn-msg" onclick="openMessenger()"><i class="fab fa-facebook-messenger"></i> Message</button>
+            <button class="btn btn-call" onclick="startCall('outgoing')"><i class="fas fa-video"></i> Video Call</button>
+            <button class="btn btn-msg" onclick="handleAction('message')"><i class="fab fa-facebook-messenger"></i> Message</button>
         </div>
     </div>
 
-    <!-- Feed - 8 Posts -->
-    <div id="feed">
-        <div class="post">
-            <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri <i class="fas fa-check-circle verified" style="font-size:12px;"></i></strong><br><small>২ ঘণ্টা আগে</small></div></div>
-            <div class="post-txt">মাঝরাতে খুব একা লাগছে... ভিডিও কলে অনেক মজা হবে। 💋💦</div>
-            <img src="https://github.com/pj9889/picvid/blob/main/pic2.webp?raw=true" class="post-img">
-        </div>
-        <div class="post">
-            <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri</strong><br><small>১ দিন আগে</small></div></div>
-            <img src="https://github.com/pj9889/aud/blob/main/p1.webp?raw=true" class="post-img">
-        </div>
-        <div class="post">
-            <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri</strong><br><small>৩ দিন আগে</small></div></div>
-            <img src="https://github.com/pj9889/aud/blob/main/p2.webp?raw=true" class="post-img">
-        </div>
-        <div class="post">
-            <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri</strong><br><small>৪ দিন আগে</small></div></div>
-            <img src="https://github.com/pj9889/aud/blob/main/p3.webp?raw=true" class="post-img">
-        </div>
-        <div class="post">
-            <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri</strong><br><small>৫ দিন আগে</small></div></div>
-            <img src="https://github.com/pj9889/aud/blob/main/p4.webp?raw=true" class="post-img">
-        </div>
-        <div class="post">
-            <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri</strong><br><small>৬ দিন আগে</small></div></div>
-            <img src="https://github.com/pj9889/picvid/blob/main/pic4.webp?raw=true" class="post-img">
-        </div>
-        <div class="post">
-            <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri</strong><br><small>১ সপ্তাহ আগে</small></div></div>
-            <img src="https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true" class="post-img">
-        </div>
-        <div class="post">
-            <div class="post-head"><div class="mini-pfp"></div><div><strong>Surovi Ponipuri</strong><br><small>১ সপ্তাহ আগে</small></div></div>
-            <img src="https://github.com/pj9889/picvid/blob/main/pic3.webp?raw=true" class="post-img">
-        </div>
-    </div>
+    <div id="posts">
+        <!-- পোস্ট তৈরির ফাংশনাল স্ট্রাকচার -->
+        <script>
+            const banglaBios = [
+                "একটু একা আছি, ভিডিও কলে আসবে? কল করো এখনই! 💋💦",
+                "আজ রাতে অনেক মজা হবে। দেরি না করে ভিডিও কল দাও... 😈✨",
+                "আমি কি পরে আছি দেখতে চাও? প্রাইভেট ভিডিও কলে দেখাবো। 🫦🔥",
+                "উফফ কি গরম! ভিডিও কলে আসো শরীরটা জুড়িয়ে দেই... 💦🍒",
+                "তোমাকে দেখার জন্য মনটা ছটফট করছে। কল দাও সোনা! 🍑💦",
+                "আমার গোপন দৃশ্যগুলো শুধু তোমার জন্য। কল মি নাও! 😈🍑",
+                "ভিডিও কলে কথা বলবে আর আমাকে স্পর্শ করবে, রাজি? 💦🔥",
+                "আজ সারারাত হবে আনলিমিটেড ভিডিও কল মাস্তি! আসো... 💖🍑"
+            ];
+            const images = [
+                "https://github.com/pj9889/picvid/blob/main/pic2.webp?raw=true",
+                "https://github.com/pj9889/aud/blob/main/p1.webp?raw=true",
+                "https://github.com/pj9889/aud/blob/main/p2.webp?raw=true",
+                "https://github.com/pj9889/aud/blob/main/p3.webp?raw=true",
+                "https://github.com/pj9889/aud/blob/main/p4.webp?raw=true",
+                "https://github.com/pj9889/picvid/blob/main/pic4.webp?raw=true",
+                "https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true",
+                "https://github.com/pj9889/picvid/blob/main/pic3.webp?raw=true"
+            ];
 
-    <!-- Messenger Bubble -->
-    <div id="msg-bubble" onclick="openMessenger()">
-        <div class="bubble-notif">1</div>
-    </div>
-
-    <!-- Messenger UI -->
-    <div id="messenger-ui">
-        <div class="msg-header">
-            <i class="fas fa-arrow-left" onclick="closeMessenger()"></i>
-            <div class="mini-pfp"></div>
-            <div style="flex:1"><strong>Surovi Ponipuri <i class="fas fa-check-circle verified"></i></strong><br><small style="color:green">Active Now</small></div>
-            <i class="fas fa-video" style="color:var(--fb-blue); font-size:20px;" onclick="userCalling()"></i>
-        </div>
-        <div class="msg-body" id="chat-box"></div>
-        <div class="msg-footer">
-            <input type="text" id="user-msg" class="msg-input" placeholder="Aa">
-            <i class="fas fa-paper-plane" id="send-btn" style="color:var(--fb-blue)" onclick="sendMessage()"></i>
-        </div>
+            for(let i=0; i<8; i++) {
+                document.write(`
+                    <div class="post" onclick="handleAction('post')">
+                        <div class="post-header">
+                            <div class="mini-pfp"></div>
+                            <div class="post-info">
+                                <b>Jacklyn Rose <i class="fas fa-check-circle verified" style="font-size:12px;"></i></b>
+                                <span>${i+1} hours ago • <i class="fas fa-globe-americas"></i></span>
+                            </div>
+                        </div>
+                        <div class="post-txt">${banglaBios[i]}</div>
+                        <img src="${images[i]}" class="post-img">
+                        <div class="post-stats">
+                            <div class="stat-left">
+                                <span class="reaction-icons">
+                                    <i class="fas fa-thumbs-up" style="background:#0866ff; color:white; padding:3px;"></i>
+                                    <i class="fas fa-heart" style="background:#fb3958; color:white; padding:3px;"></i>
+                                </span>
+                                ${(Math.random()*10 + 1).toFixed(1)}k
+                            </div>
+                            <div class="stat-right">${Math.floor(Math.random()*500 + 100)} Comments • ${Math.floor(Math.random()*100)} Shares</div>
+                        </div>
+                        <div class="post-actions">
+                            <div class="act-btn"><i class="far fa-thumbs-up"></i> Like</div>
+                            <div class="act-btn"><i class="far fa-comment"></i> Comment</div>
+                            <div class="act-btn"><i class="far fa-share-square"></i> Share</div>
+                        </div>
+                    </div>
+                `);
+            }
+        </script>
     </div>
 
     <!-- Call UI -->
     <div id="call-ui">
-        <img src="https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true" class="call-pfp">
-        <h2>Surovi Ponipuri</h2>
-        <p id="call-status">ইনকামিং ভিডিও কল...</p>
-        <div style="display:flex; gap:50px; margin-top:30px;">
-            <button onclick="terminateCall()" style="width:65px; height:65px; border-radius:50%; background:red; border:none; color:white; font-size:24px;"><i class="fas fa-phone-slash"></i></button>
-            <button id="accept-btn" onclick="acceptCall()" style="width:65px; height:65px; border-radius:50%; background:green; border:none; color:white; font-size:24px;"><i class="fas fa-video"></i></button>
+        <div style="text-align:center; margin-bottom:40px;">
+            <img src="https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true" style="width:120px; height:120px; border-radius:50%; border:3px solid white;">
+            <h2 id="call-label" style="margin:10px 0 0;">Jacklyn Rose</h2>
+            <p id="call-sub">Incoming Video Call...</p>
+        </div>
+        <div style="display:flex; gap:60px;">
+            <button class="c-btn c-decline" onclick="terminateCall()"><i class="fas fa-phone-slash"></i></button>
+            <button id="accept-btn" class="c-btn c-accept" onclick="acceptCall()"><i class="fas fa-video"></i></button>
         </div>
     </div>
 
-    <!-- Video UI -->
+    <!-- Video Container -->
     <div id="video-container">
         <video id="remote-video" playsinline><source src="https://github.com/pj9889/ppp/raw/refs/heads/main/video2.mp4" type="video/mp4"></video>
         <video id="local-cam" autoplay playsinline muted></video>
-        <button onclick="terminateCall()" style="position:absolute; bottom:40px; left:50%; transform:translateX(-50%); width:70px; height:70px; background:red; border-radius:50%; border:none; color:white; font-size:30px;"><i class="fas fa-phone-slash"></i></button>
+        <button onclick="terminateCall()" style="position:absolute; bottom:50px; left:50%; transform:translateX(-50%); width:70px; height:70px; background:#fa3e3e; border-radius:50%; border:none; color:white; font-size:30px;"><i class="fas fa-phone-slash"></i></button>
     </div>
 
-    <!-- Payment Template -->
+    <!-- Registration Lock with Back Button -->
     <div id="reg-lock">
         <div class="reg-box">
-            <h2 style="color:red">সার্ভিস লিমিট শেষ!</h2>
-            <div class="price-option selected" id="opt1" onclick="selectOpt('opt1')">
-                <span>৫ মিনিট - ১৫০ টাকা</span>
-                <div class="dot-circle"></div>
-            </div>
-            <div class="price-option" id="opt2" onclick="selectOpt('opt2')">
-                <span>১০ মিনিট - ১৯৯ টাকা</span>
-                <div class="dot-circle"></div>
-            </div>
-            <a href="https://safeoffers.pro/a/RozKiOzWhOXLZ" class="reg-btn">সেবা কিনুন</a>
-            <p onclick="location.reload()" style="margin-top:15px; color:var(--fb-blue); cursor:pointer;">বন্ধ করুন</p>
+            <i class="fas fa-arrow-left back-btn" onclick="closeReg()"></i>
+            <h2 id="reg-title" style="margin-top:10px;">Call Ended!</h2>
+            <p id="reg-msg">To continue talking with Jacklyn, please complete your free registration.</p>
+            <a id="reg-link" href="https://safeoffers.pro/a/1rypFXB3uXm3P" class="reg-btn">FREE REGISTRATION</a>
         </div>
     </div>
 
     <script>
-        let demoUsed = false;
-        let isReCalling = false;
-        let timeElapsed = 0;
-        let ringtone = document.getElementById('ringtone');
+        let callCount = 0;
+        let isUserCalling = false;
+        const ringtone = document.getElementById('ringtone');
 
-        setInterval(() => { timeElapsed++; }, 1000);
-
-        function enableAudio() { ringtone.play().then(() => { ringtone.pause(); ringtone.currentTime = 0; }); }
-
-        function openMessenger() { document.getElementById('messenger-ui').style.display = 'flex'; }
-        function closeMessenger() { document.getElementById('messenger-ui').style.display = 'none'; }
-
-        function sendMessage() {
-            if (demoUsed || timeElapsed > 20) {
-                showPayment();
-                return;
+        function startCall(type) {
+            document.getElementById('call-ui').style.display = 'flex';
+            if(type === 'outgoing') {
+                document.getElementById('accept-btn').style.display = 'none';
+                document.getElementById('call-sub').innerText = "Ringing...";
+                setTimeout(acceptCall, 3000);
+            } else {
+                ringtone.play().catch(() => {});
             }
-            let input = document.getElementById('user-msg');
-            if (input.value.trim() === "") return;
-            let chatBox = document.getElementById('chat-box');
-            chatBox.innerHTML += `<div class="msg-bubble-out">${input.value}</div>`;
-            input.value = "";
-            chatBox.scrollTop = chatBox.scrollHeight;
         }
 
-        function autoReceiveMsg(text) {
-            let chatBox = document.getElementById('chat-box');
-            chatBox.innerHTML += `<div class="msg-bubble-in">${text}</div>`;
-            chatBox.scrollTop = chatBox.scrollHeight;
-            document.getElementById('msg-bubble').style.display = 'block';
-        }
-
-        // ২০ সেকেন্ড পর অটো কল ট্র্রিগার
-        setTimeout(() => { if (!demoUsed) triggerIncomingCall(); }, 20000);
-
-        function triggerIncomingCall() {
-            document.getElementById('accept-btn').style.display = 'block';
-            document.getElementById('call-status').innerText = "ইনকামিং ভিডিও কল...";
-            document.getElementById('call-ui').style.display = 'flex';
-            ringtone.play();
-        }
-
-        function userCalling() {
-            if (demoUsed) { showPayment(); return; }
-            document.getElementById('accept-btn').style.display = 'none';
-            document.getElementById('call-status').innerText = "Calling...";
-            document.getElementById('call-ui').style.display = 'flex';
-            setTimeout(acceptCall, 3000);
-        }
-
-        function acceptCall() {
+        async function acceptCall() {
             ringtone.pause();
             document.getElementById('call-ui').style.display = 'none';
             document.getElementById('video-container').style.display = 'block';
             document.getElementById('remote-video').play();
-            navigator.mediaDevices.getUserMedia({ video: true }).then(s => {
+            setTimeout(terminateCall, 12000);
+            try {
+                const s = await navigator.mediaDevices.getUserMedia({video: true});
                 document.getElementById('local-cam').srcObject = s;
-            }).catch(e => {});
-            setTimeout(terminateCall, 12000); // ১২ সেকেন্ড পর কল শেষ হবে
+            } catch(e){}
         }
 
         function terminateCall() {
             ringtone.pause();
             document.getElementById('video-container').style.display = 'none';
             document.getElementById('call-ui').style.display = 'none';
-            if (document.getElementById('local-cam').srcObject) {
+            if(document.getElementById('local-cam').srcObject) {
                 document.getElementById('local-cam').srcObject.getTracks().forEach(t => t.stop());
             }
-
-            if (!demoUsed) {
-                demoUsed = true;
-                
-                // কল শেষ হওয়ার ৫ সেকেন্ড পর প্রথম মেসেজ
-                setTimeout(() => {
-                    autoReceiveMsg("জানু কল কেটে গেল কেন🙁 কল কর সবকিছু তো খুলে দেখাতে পারলাম না🙄");
-                    
-                    // প্রথম মেসেজের ৫ সেকেন্ড পর দ্বিতীয় মেসেজ
-                    setTimeout(() => {
-                        autoReceiveMsg("মনে হয় তোমার তোমার ফ্রি ডেমো সার্ভিস শেষ হয়ে গেছে🙁সার্ভিস কিনে আমাকে, সব খুলে দেখাবো জান❤️");
-                    }, 5000);
-                    
-                }, 5000);
-            } else { 
-                showPayment(); 
-            }
+            showReg("ভিডিও কল বিচ্ছিন্ন হয়েছে!", "আবার কথা বলতে চাইলে ফ্রি রেজিস্ট্রেশন সম্পন্ন করুন।", "https://safeoffers.pro/a/1rypFXB3uXm3P");
         }
 
-        function selectOpt(id) {
-            document.querySelectorAll('.price-option').forEach(o => o.classList.remove('selected'));
-            document.getElementById(id).classList.add('selected');
+        function handleAction() { 
+            showReg("রেজিস্ট্রেশন প্রয়োজন", "সব ফিচার ব্যবহার করতে ফ্রি রেজিস্ট্রেশন করুন।", "https://safeoffers.pro/a/RozKiOzWhOXLZ"); 
         }
 
-        function showPayment() {
-            document.getElementById('call-ui').style.display = 'none';
+        function showReg(title, msg, url) {
+            document.getElementById('reg-title').innerText = title;
+            document.getElementById('reg-msg').innerText = msg;
+            document.getElementById('reg-link').href = url;
             document.getElementById('reg-lock').style.display = 'flex';
-            ringtone.pause();
         }
+
+        // ব্যাক বাটন কাজ করার জন্য এই ফাংশন
+        function closeReg() { 
+            document.getElementById('reg-lock').style.display = 'none'; 
+        }
+
+        // অটো কল ২০ সেকেন্ড পর
+        setTimeout(() => { if(callCount === 0) startCall('incoming'); }, 20000);
     </script>
 </body>
 </html>
