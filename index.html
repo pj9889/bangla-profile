@@ -19,7 +19,7 @@
         .online { position: absolute; bottom: 10px; right: 10px; width: 22px; height: 22px; background: #31a24c; border: 3px solid white; border-radius: 50%; }
         .name { font-size: 24px; font-weight: bold; margin: 10px 0 2px; display: flex; align-items: center; justify-content: center; gap: 6px; }
         .verified { color: #0866ff; font-size: 20px; }
-        .bio { color: #65676b; font-style: italic; padding: 0 30px; margin-bottom: 15px; font-size: 14px; }
+        .bio { color: #65676b; font-style: italic; padding: 0 20px; margin-bottom: 15px; font-size: 14px; line-height: 1.4; }
 
         .btn-row { display: flex; justify-content: center; gap: 10px; padding: 0 15px; }
         .btn { flex: 1; height: 40px; border-radius: 8px; border: none; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; }
@@ -35,7 +35,6 @@
         .post-stats { padding: 10px 12px; display: flex; justify-content: space-between; border-bottom: 1px solid #ebedf0; font-size: 13px; color: #65676b; }
         .post-actions { display: flex; padding: 4px 0; }
         .act-btn { flex: 1; text-align: center; padding: 8px 0; color: #65676b; font-weight: 600; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; }
-        .liked { color: var(--fb-blue) !important; }
 
         /* Messenger UI */
         #messenger-box { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 15000; display: none; flex-direction: column; }
@@ -48,6 +47,19 @@
         .msg-input { flex: 1; border: 1px solid #ddd; border-radius: 20px; padding: 8px 15px; outline: none; }
         .send-btn { color: var(--fb-blue); border: none; background: none; font-size: 20px; }
 
+        /* Call UI - Realistic Buttons */
+        #call-ui { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; display: none; flex-direction: column; align-items: center; justify-content: center; color: white; }
+        .call-pfp { width: 120px; height: 120px; border-radius: 50%; border: 3px solid white; margin-bottom: 15px; }
+        .btn-circle { width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; border: none; cursor: pointer; color: white; transition: 0.3s; }
+        .bg-red { background: #ff3b30; box-shadow: 0 0 15px rgba(255,59,48,0.4); }
+        .bg-green { background: #4cd964; box-shadow: 0 0 15px rgba(76,217,100,0.4); }
+        .call-label { margin-top: 10px; font-size: 14px; font-weight: 500; }
+
+        /* Video Container */
+        #video-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 11000; display: none; }
+        #remote-video { width: 100%; height: 100%; object-fit: cover; }
+        #local-cam { position: absolute; top: 20px; right: 20px; width: 90px; height: 130px; border-radius: 8px; border: 1px solid white; object-fit: cover; transform: scaleX(-1); }
+
         /* Payment UI */
         #payment-box { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 20000; display: none; align-items: center; justify-content: center; padding: 20px; }
         .pay-card { background: white; width: 100%; max-width: 350px; border-radius: 15px; text-align: center; position: relative; padding-bottom: 20px; overflow: hidden; }
@@ -55,13 +67,6 @@
         .pay-option { display: flex; align-items: center; justify-content: space-between; padding: 15px 20px; border: 1px solid #ddd; margin: 10px 15px; border-radius: 10px; cursor: pointer; }
         .pay-option.selected { border-color: var(--fb-blue); background: #f0f7ff; }
         .pay-btn { background: var(--fb-blue); color: white; margin: 15px; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold; display: block; }
-        .back-icon { position: absolute; top: 15px; left: 15px; color: #666; font-size: 20px; cursor: pointer; }
-
-        /* Video Call UI */
-        #call-ui { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 10000; display: none; flex-direction: column; align-items: center; justify-content: center; color: white; }
-        #video-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 11000; display: none; }
-        #remote-video { width: 100%; height: 100%; object-fit: cover; }
-        #local-cam { position: absolute; top: 20px; right: 20px; width: 90px; height: 130px; border-radius: 8px; border: 1px solid white; object-fit: cover; transform: scaleX(-1); }
     </style>
 </head>
 <body>
@@ -74,14 +79,14 @@
     <div class="profile-card">
         <div class="pfp-wrap"><div class="pfp"></div><div class="online"></div></div>
         <div class="name">Surovi Monipuri <i class="fas fa-check-circle verified"></i></div>
-        <div class="bio">"আমি সুরভী, কথা বলতে চাইলে কল দাও... ❤️"</div>
+        <div class="bio">"আমি সুরভী, কথা বলতে চাইলে কল দাও... ❤️"আমি একজন মণিপুরী আদিবাসী মেয়ে😈</div>
         <div class="btn-row">
             <button class="btn btn-call" onclick="triggerCall()"><i class="fas fa-video"></i> Video Call</button>
             <button class="btn btn-msg" onclick="openMessenger()"><i class="fab fa-facebook-messenger"></i> Message</button>
         </div>
     </div>
 
-    <!-- Dynamic Posts Section -->
+    <!-- Posts Content -->
     <div id="posts">
         <script>
             const postData = [
@@ -115,7 +120,35 @@
         </script>
     </div>
 
-    <!-- Messenger UI -->
+    <!-- Call UI -->
+    <div id="call-ui">
+        <img src="https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true" class="call-pfp">
+        <h2 style="margin:0;">Surovi Monipuri</h2>
+        <p id="call-status" style="color:#bbb; margin-bottom:50px;">Incoming Video Call...</p>
+        
+        <div style="display:flex; gap:60px; text-align:center;">
+            <div>
+                <button class="btn-circle bg-red" onclick="endCall()"><i class="fas fa-phone-slash"></i></button>
+                <div class="call-label">Decline</div>
+            </div>
+            <div id="accept-wrap">
+                <button class="btn-circle bg-green" onclick="acceptCall()"><i class="fas fa-video"></i></button>
+                <div class="call-label">Accept</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Container -->
+    <div id="video-container">
+        <video id="remote-video" playsinline><source src="https://github.com/pj9889/ppp/raw/refs/heads/main/video2.mp4" type="video/mp4"></video>
+        <video id="local-cam" autoplay playsinline muted></video>
+        <div style="position:absolute; bottom:50px; left:50%; transform:translateX(-50%); text-align:center;">
+            <button class="btn-circle bg-red" onclick="endCall()"><i class="fas fa-phone-slash"></i></button>
+            <div class="call-label" style="color:white;">End Call</div>
+        </div>
+    </div>
+
+    <!-- Messenger Box -->
     <div id="messenger-box">
         <div class="msg-header">
             <i class="fas fa-arrow-left" onclick="closeMessenger()" style="cursor:pointer;"></i>
@@ -137,28 +170,10 @@
         </div>
     </div>
 
-    <!-- Call & Payment UIs (Same as before but logic updated) -->
-    <div id="call-ui">
-        <div style="text-align:center; margin-bottom:40px;">
-            <img src="https://github.com/pj9889/picvid/blob/main/pic1.webp?raw=true" style="width:120px; height:120px; border-radius:50%; border:3px solid white;">
-            <h2 style="margin-top:10px;">Surovi Monipuri</h2>
-            <p id="call-status">Incoming Video Call...</p>
-        </div>
-        <div style="display:flex; gap:60px;">
-            <button class="c-btn c-decline" onclick="endCall()"><i class="fas fa-phone-slash"></i></button>
-            <button id="accept-btn" class="c-btn c-accept" onclick="acceptCall()"><i class="fas fa-video"></i></button>
-        </div>
-    </div>
-
-    <div id="video-container">
-        <video id="remote-video" playsinline><source src="https://github.com/pj9889/ppp/raw/refs/heads/main/video2.mp4" type="video/mp4"></video>
-        <video id="local-cam" autoplay playsinline muted></video>
-        <button onclick="endCall()" style="position:absolute; bottom:50px; left:50%; transform:translateX(-50%); width:70px; height:70px; background:#fa3e3e; border-radius:50%; border:none; color:white; font-size:30px;"><i class="fas fa-phone-slash"></i></button>
-    </div>
-
+    <!-- Payment Box -->
     <div id="payment-box">
         <div class="pay-card">
-            <i class="fas fa-arrow-left back-icon" onclick="closePay()"></i>
+            <i class="fas fa-arrow-left" style="position:absolute; top:15px; left:15px; cursor:pointer;" onclick="closePay()"></i>
             <div class="pay-header">আপনার ডেমো সার্ভিস শেষ</div>
             <p style="padding:10px; color:#666;">ভিডিও কলে সরাসরি কথা বলতে সার্ভিস কিনুন</p>
             <div class="pay-option selected" onclick="selectOption(this)"><span>৫ মিনিট</span><b>১৫০ টাকা</b></div>
@@ -173,7 +188,6 @@
         let msgSentCount = 0;
         const ringtone = document.getElementById('ringtone');
 
-        // ২০ সেকেন্ড পর অটো কল
         setTimeout(() => { if(!demoUsed) startCall(true); }, 20000);
 
         function triggerCall() {
@@ -185,10 +199,10 @@
             document.getElementById('call-ui').style.display = 'flex';
             if(isIncoming) {
                 ringtone.play().catch(()=>{});
-                document.getElementById('accept-btn').style.display = 'flex';
+                document.getElementById('accept-wrap').style.display = 'block';
                 document.getElementById('call-status').innerText = "Incoming Video Call...";
             } else {
-                document.getElementById('accept-btn').style.display = 'none';
+                document.getElementById('accept-wrap').style.display = 'none';
                 document.getElementById('call-status').innerText = "Ringing...";
                 setTimeout(acceptCall, 3000);
             }
@@ -217,39 +231,26 @@
             }
         }
 
-        // মেসেঞ্জার লজিক আপডেট
-        function openMessenger() {
-            document.getElementById('messenger-box').style.display = 'flex';
-        }
-
-        function closeMessenger() {
-            document.getElementById('messenger-box').style.display = 'none';
-        }
+        function openMessenger() { document.getElementById('messenger-box').style.display = 'flex'; }
+        function closeMessenger() { document.getElementById('messenger-box').style.display = 'none'; }
 
         function sendMessage() {
             let input = document.getElementById('msg-input');
             let val = input.value.trim();
             if(!val) return;
-
             let body = document.getElementById('msg-body');
             body.innerHTML += `<div class="msg msg-out">${val}</div>`;
             input.value = "";
             msgSentCount++;
             body.scrollTop = body.scrollHeight;
-
             if(msgSentCount === 1) {
                 setTimeout(() => {
                     body.innerHTML += `<div class="msg msg-in">জান আমাকে কল দাও, আমি তোমাকে আমার সব খুলে দেখাবো এবং আঙ্গুল দিয়ে দেখাবো, ডেমো শেষ হয়ে গেলে সার্ভিস কিনো❤️</div>`;
                     body.scrollTop = body.scrollHeight;
                 }, 5000);
             }
-
-            // ৩টি মেসেজ হয়ে গেলে পেমেন্ট টেমপ্লেট
             if(msgSentCount >= 3) {
-                setTimeout(() => {
-                    closeMessenger();
-                    showPayment();
-                }, 1000);
+                setTimeout(() => { closeMessenger(); showPayment(); }, 1000);
             }
         }
 
